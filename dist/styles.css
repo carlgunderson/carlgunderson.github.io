@@ -1,0 +1,7 @@
+body {
+  border-top: 4px solid #f25c05;
+  font-family: "Open Sans", "Helvetica Neue", Helvetica, sans-serif; }
+  body h1 {
+    color: #333; }
+  body .container-fluid {
+    margin: 80px; }
