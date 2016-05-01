@@ -1,5 +1,5 @@
 #Add a README, they said.
 
-##You gotta give the people what they want, they said.
+Built with *webpack*, *sass*, and *looove*.
 
-###**Super** useful.
+###Super useful.
