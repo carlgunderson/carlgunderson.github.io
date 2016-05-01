@@ -4,7 +4,19 @@ module.exports = {
 		path: __dirname + '/dist',
 		filename: 'bundle.js'
 	},
+	devtool: 'inline-source-map',
 	module: {
-		loaders: []
+		loaders: [
+			{
+				test: /\.js$/,
+				loaders: [ 'babel' ],
+				exclude: /node_modules/,
+				include: __dirname + '/js'
+			},
+			{
+				test: /\.scss$/,
+				loaders: ['style', 'css?sourceMap', 'sass?sourceMap']
+			}
+		]
 	}
 };
