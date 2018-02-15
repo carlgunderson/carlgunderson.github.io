@@ -2,19 +2,15 @@
 <html lang="en">
 	<head>
 		<meta charset="utf-8">
-		<meta equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-		<title>Carl Gunderson | web development</title>
-		<meta name="keywords" content="carl gunderson, crlgndrsn, front-end, web development, html, css, javascript, bootstrap">
+		<title>Carl Gunderson | web development portfolio</title>
 		<meta name="viewport" content="width=device-width">
-		<link href="//fonts.googleapis.com/css?family=Open+Sans:400,700,300" rel="stylesheet">
+		<link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500" rel="stylesheet">
 		<link href="dist/styles.css" rel="stylesheet">
 	</head>
 	<body>
-		<div class="container-fluid">
-			<h1>Carl Gunderson</h1>
-			<p>front-end web development</p>
-		</div>
+		<div id="app-root"></div>
 		<!-- <div class="container">
+			&lt;/&gt;&nbsp;<a href="//twitter.com/shopgovx" target="_blank">@GovX</a>
 			<div class="row">
 				<div class="col-xs-12 col-sm-3">
 					<img src="//placehold.it/60x60">
@@ -51,14 +47,13 @@
 				</ul>
 			</footer>
 		</div> -->
+		<!-- Global site tag (gtag.js) - Google Analytics -->
+		<script async src="https://www.googletagmanager.com/gtag/js?id=UA-34259901-1"></script>
 		<script>
-		  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-		  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-		  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-		  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
-		
-		  ga('create', 'UA-34259901-1', 'auto');
-		  ga('send', 'pageview');
+			window.dataLayer = window.dataLayer || [];
+			function gtag(){dataLayer.push(arguments);}
+			gtag('js', new Date());
+			gtag('config', 'UA-34259901-1');
 		</script>
 		<script src="dist/bundle.js"></script>
 	</body>

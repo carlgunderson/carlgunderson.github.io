@@ -1,5 +1,7 @@
-module.exports = {
-	entry: './js/index.js',
+import path from 'path'
+
+export default {
+	entry: './src/index.js',
 	output: {
 		path: __dirname + '/dist',
 		publicPath: '/dist/',
@@ -7,17 +9,20 @@ module.exports = {
 	},
 	devtool: 'inline-source-map',
 	module: {
-		loaders: [
+		rules: [
 			{
 				test: /\.js$/,
-				loaders: [ 'babel' ],
+				loader: 'babel-loader',
 				exclude: /node_modules/,
-				include: __dirname + '/js'
 			},
 			{
 				test: /\.scss$/,
-				loaders: ['style', 'css?sourceMap', 'sass?sourceMap']
+				use: ['style']
 			}
 		]
+	},
+	devServer: {
+		contentBase: path.join(__dirname, './'),
+		port: 9000
 	}
-};
+}

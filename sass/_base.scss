@@ -1,12 +1,18 @@
-body {
-	margin: 0;
-	padding: 0;
-	border-top: 4px solid $mango;
+$charcoal: #242728;
+$mango: #f25c05;
 
-	h1 {
-		color: #333;
-	}
-	.container-fluid {
-		margin: 80px;
-	}
+.text-center {
+	text-align: center !important;
+}
+.text-right {
+	text-align: right !important;
+}
+.text-left {
+	text-align: left !important;
+}
+.pull-left {
+	float: left !important;
+}
+.pull-right {
+	float: right !important;
 }
