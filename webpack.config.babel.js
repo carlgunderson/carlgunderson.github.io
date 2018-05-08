@@ -1,7 +1,9 @@
+import webpack from 'webpack'
 import path from 'path'
+import UglifyJsPlugin from 'uglifyjs-webpack-plugin'
 
 export default {
-	entry: './src/index.js',
+	entry: ['babel-polyfill', './src/index.js'],
 	output: {
 		path: __dirname + '/dist',
 		publicPath: '/dist/',
@@ -12,8 +14,13 @@ export default {
 		rules: [
 			{
 				test: /\.js$/,
-				loader: 'babel-loader',
 				exclude: /node_modules/,
+				use: {
+					loader: 'babel-loader',
+					options: {
+						
+					}
+				}
 			},
 			{
 				test: /\.scss$/,
@@ -21,6 +28,9 @@ export default {
 			}
 		]
 	},
+	plugins: [
+		new UglifyJsPlugin({ uglifyOptions: { compress: true }})
+	],
 	devServer: {
 		contentBase: path.join(__dirname, './'),
 		port: 9000
