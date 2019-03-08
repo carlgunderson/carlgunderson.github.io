@@ -1,38 +1,40 @@
-import webpack from 'webpack'
 import path from 'path'
-import UglifyJsPlugin from 'uglifyjs-webpack-plugin'
+import webpack from 'webpack'
+import CleanWebpackPlugin from 'clean-webpack-plugin'
+import HtmlWebpackPlugin from 'html-webpack-plugin'
 
 export default {
 	entry: ['babel-polyfill', './src/index.js'],
+	// target: 'node',
 	output: {
-		path: __dirname + '/dist',
-		publicPath: '/dist/',
-		filename: 'bundle.js'
+		path: path.resolve(__dirname, 'dist'),
+		// publicPath: '/dist/',
+		filename: '[hash].bundle.js',
 	},
 	devtool: 'inline-source-map',
 	module: {
 		rules: [
 			{
-				test: /\.js$/,
+				test: /\.(js|jsx)$/,
 				exclude: /node_modules/,
-				use: {
-					loader: 'babel-loader',
-					options: {
-						
-					}
-				}
+				use: ['babel-loader'],
 			},
 			{
 				test: /\.scss$/,
-				use: ['style']
-			}
-		]
+				use: ['style-loader', 'css-loader', 'sass-loader'],
+			},
+		],
+	},
+	resolve: {
+		extensions: ['*', '.js', '.jsx'],
 	},
 	plugins: [
-		new UglifyJsPlugin({ uglifyOptions: { compress: true }})
+		new webpack.HotModuleReplacementPlugin(),
+		new CleanWebpackPlugin(),
+		new HtmlWebpackPlugin({ template: './index.html' }),
 	],
 	devServer: {
 		contentBase: path.join(__dirname, './'),
-		port: 9000
-	}
+		port: 9000,
+	},
 }

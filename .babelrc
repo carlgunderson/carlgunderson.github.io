@@ -1,17 +1,6 @@
 {
-  "plugins": [
-    
-  ],
   "presets": [
-  	"@babel/preset-stage-2",
-    "@babel/preset-react",
-    [
-      "@babel/preset-env",
-      {
-        "targets": {
-          "browsers": "last 2 Chrome versions"
-        }
-      }
-    ]
+    "@babel/preset-env",
+    "@babel/preset-react"
   ]
 }

@@ -1,18 +1,17 @@
 import React, { Component } from 'react'
-import { MuiThemeProvider, withStyles } from 'material-ui/styles'
-import Reboot from 'material-ui/Reboot'
-import AppBar from 'material-ui/AppBar'
-import Toolbar from 'material-ui/Toolbar'
-import Button from 'material-ui/Button'
-import Typography from 'material-ui/Typography'
-import Hidden from 'material-ui/Hidden'
-import GridList, { GridListTile, GridListTileBar } from 'material-ui/GridList'
-import IconButton from 'material-ui/IconButton'
-import AddIcon from 'material-ui-icons/Add'
+import MuiThemeProvider from '@material-ui/core/styles/MuiThemeProvider'
+import CssBaseline from '@material-ui/core/CssBaseline'
+import AppBar from '@material-ui/core/AppBar'
+import Toolbar from '@material-ui/core/Toolbar'
+import Typography from '@material-ui/core/Typography'
+import Hidden from '@material-ui/core/Hidden'
+import GridList, { GridListTile, GridListTileBar } from '@material-ui/core/GridList'
+
 import ExperienceCard from '../ExperienceCard'
 import theme from '../../utils/theme'
+import '../../sass/index.scss'
 
-const styles = theme => ({
+const styles = {
 	header: {
 		display: 'flex',
 		justifyContent: 'space-between',
@@ -48,7 +47,7 @@ const styles = theme => ({
 		left: '0px',
 		textAlign: 'center',
 	},
-})
+}
 
 class App extends Component {
 
@@ -56,43 +55,39 @@ class App extends Component {
 		let { classes } = this.props
 		return (
 			<MuiThemeProvider theme={ theme }>
-				<Reboot />
+				<CssBaseline />
 				<AppBar position='static'>
-					<Toolbar className={ classes.header }>
+					<Toolbar className={ styles.header }>
 						<Typography variant='title'>carl gunderson</Typography>
-						<Button
-							variant='flat'
-							color='secondary'
-							children='Get in touch' />
 						<Hidden only='xs'><Typography variant='title'>web development portfolio</Typography></Hidden>
 					</Toolbar>
 				</AppBar>
-				<div className={ classes.content }>
+				<div className={ styles.content }>
 					<Hidden smUp><h2>web development portfolio</h2></Hidden>
-					<div className={ classes.gridListWrapper }>
-						<GridList className={ classes.gridList } cols={ window.innerWidth < 600 ? 1.2 : 2.5 }>
-							<GridListTile classes={{ root: classes.gridListTileRoot, tile: classes.gridListTile }}>
+					<div className={ styles.gridListWrapper }>
+						<GridList className={ styles.gridList } cols={ window.innerWidth < 600 ? 1.2 : 2.5 }>
+							<GridListTile classes={{ root: styles.gridListTileRoot, tile: styles.gridListTile }}>
 								<ExperienceCard
 									link='https://www.govx.com'
 									image='../images/card-govx-small.jpg'
 									title='GovX'
 									description='Senior Web Developer' />
 							</GridListTile>
-							<GridListTile classes={{ root: classes.gridListTileRoot, tile: classes.gridListTile }}>
+							<GridListTile classes={{ root: styles.gridListTileRoot, tile: styles.gridListTile }}>
 								<ExperienceCard
 									link='https://start.att.net/exclusive/uverse/uverse-tv'
 									image='../images/card-uverse-small.jpg'
 									title='U-verse'
 									description='Senior Web Developer' />
 							</GridListTile>
-							<GridListTile classes={{ root: classes.gridListTileRoot, tile: classes.gridListTile }}>
+							<GridListTile classes={{ root: styles.gridListTileRoot, tile: styles.gridListTile }}>
 								<ExperienceCard
 									link='https://www.healthpartners.com/hp/index.html'
 									image='../images/card-hp-small.jpg'
 									title='HealthPartners'
 									description='Front-end Web Developer' />
 							</GridListTile>
-							<GridListTile classes={{ root: classes.gridListTileRoot, tile: classes.gridListTile }}>
+							<GridListTile classes={{ root: styles.gridListTileRoot, tile: styles.gridListTile }}>
 								<ExperienceCard
 									link='https://www.digi.com'
 									image='../images/card-digi-small.jpg'
@@ -102,7 +97,7 @@ class App extends Component {
 						</GridList>
 					</div>
 				</div>
-				<div className={ classes.footer }>
+				<div className={ styles.footer }>
 					<Typography component='p' color='textSecondary'>&copy; { (new Date()).getFullYear() } Carl Gunderson</Typography>
 				</div>
 			</MuiThemeProvider>
@@ -110,4 +105,4 @@ class App extends Component {
 	}
 }
 
-export default withStyles(styles)(App)
+export default App

@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import { Link } from 'react-router-dom'
-import Card, { CardActions, CardContent, CardMedia } from 'material-ui/Card'
-import Typography from 'material-ui/Typography'
+import Card, { CardActions, CardContent, CardMedia } from '@material-ui/core/Card'
+import Typography from '@material-ui/core/Typography'
 
 class ExperienceCard extends Component {
 
