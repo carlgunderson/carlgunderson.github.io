@@ -67,6 +67,20 @@ class App extends Component {
 				<div className={ classes.content }>
 					<div className={ classes.gridListWrapper }>
 						<GridList className={ classes.gridList } cols={ window.innerWidth < 600 ? 1.2 : 2.5 }>
+						<GridListTile classes={{ root: classes.gridListTileRoot, tile: classes.gridListTile }}>
+								<ExperienceCard
+									link='https://www.skinnyfit.com'
+									image='../images/card-skinnyfit-small.jpg'
+									title='SkinnyFit'
+									description='Senior Web Developer' />
+							</GridListTile>
+							<GridListTile classes={{ root: classes.gridListTileRoot, tile: classes.gridListTile }}>
+								<ExperienceCard
+									link='https://www.footgod.com'
+									image='../images/card-footgod-small.jpg'
+									title='FootGod'
+									description='Senior Web Developer' />
+							</GridListTile>
 							<GridListTile classes={{ root: classes.gridListTileRoot, tile: classes.gridListTile }}>
 								<ExperienceCard
 									link='https://www.govx.com'
