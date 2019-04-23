@@ -70,42 +70,42 @@ class App extends Component {
 						<GridListTile classes={{ root: classes.gridListTileRoot, tile: classes.gridListTile }}>
 								<ExperienceCard
 									link='https://www.skinnyfit.com'
-									image='../images/card-skinnyfit-small.jpg'
+									image='../images/card-skinnyfit-full.jpg'
 									title='SkinnyFit'
 									description='Senior Web Developer' />
 							</GridListTile>
 							<GridListTile classes={{ root: classes.gridListTileRoot, tile: classes.gridListTile }}>
 								<ExperienceCard
 									link='https://www.footgod.com'
-									image='../images/card-footgod-small.jpg'
+									image='../images/card-footgod-full.jpg'
 									title='FootGod'
 									description='Senior Web Developer' />
 							</GridListTile>
 							<GridListTile classes={{ root: classes.gridListTileRoot, tile: classes.gridListTile }}>
 								<ExperienceCard
 									link='https://www.govx.com'
-									image='../images/card-govx-small.jpg'
+									image='../images/card-govx-full.jpg'
 									title='GovX'
 									description='Senior Web Developer' />
 							</GridListTile>
 							<GridListTile classes={{ root: classes.gridListTileRoot, tile: classes.gridListTile }}>
 								<ExperienceCard
 									link='https://start.att.net/exclusive/uverse/uverse-tv'
-									image='../images/card-uverse-small.jpg'
+									image='../images/card-uverse-full.jpg'
 									title='U-verse'
 									description='Senior Web Developer' />
 							</GridListTile>
 							<GridListTile classes={{ root: classes.gridListTileRoot, tile: classes.gridListTile }}>
 								<ExperienceCard
 									link='https://www.healthpartners.com/hp/index.html'
-									image='../images/card-hp-small.jpg'
+									image='../images/card-hp-full.jpg'
 									title='HealthPartners'
 									description='Front-end Web Developer' />
 							</GridListTile>
 							<GridListTile classes={{ root: classes.gridListTileRoot, tile: classes.gridListTile }}>
 								<ExperienceCard
 									link='https://www.digi.com'
-									image='../images/card-digi-small.jpg'
+									image='../images/card-digi-full.jpg'
 									title='Digi'
 									description='Applications Developer / Web Designer' />
 							</GridListTile>
