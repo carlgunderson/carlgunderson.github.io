@@ -9,6 +9,7 @@ import Hidden from '@material-ui/core/Hidden'
 import GridList from '@material-ui/core/GridList'
 import GridListTile from '@material-ui/core/GridListTile'
 
+import CustomLink from '../Link'
 import ExperienceCard from '../ExperienceCard'
 import theme from '../../utils/theme'
 import '../../sass/index.scss'
@@ -42,6 +43,16 @@ const styles = {
 	titleBar: {
 		background: 'linear-gradient(to top, rgba(0,0,0,0.7) 0%, rgba(0,0,0,0.3) 70%, rgba(0,0,0,0) 100%)',
 	},
+	icons: {
+		display: 'flex',
+	},
+	icon: {
+		height: '32px',
+
+		'&:hover': {
+
+		}
+	},
 	footer: {
 		position: 'fixed',
 		right: '0px',
@@ -61,6 +72,14 @@ class App extends Component {
 				<AppBar position='static'>
 					<Toolbar className={ classes.header }>
 						<Typography variant='h4'>carl gunderson</Typography>
+						<div className={ classes.icons }>
+							<CustomLink external link='https://github.com/carlgunderson' style={{ height: '32px' }}>
+								<img src='../../../images/icon-github-32x32.png' width='32' height='32' style={{ marginRight: '15px' }} className={ classes.icon } />
+							</CustomLink>
+							<CustomLink external link='https://linkedin.com/in/carlgunderson' style={{ height: '32px' }}>
+								<img src='../../../images/icon-linkedin-43x34.png' height='32' className={ classes.icon } />
+							</CustomLink>
+						</div>
 						<Hidden only='xs'><Typography variant='h4'>web development portfolio</Typography></Hidden>
 					</Toolbar>
 				</AppBar>

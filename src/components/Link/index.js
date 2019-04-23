@@ -10,10 +10,10 @@ class CustomLink extends Component {
 
 		return (
 			external
-			?	<a href={ link } target='_blank' style={{ textDecoration: 'none' }}>
+			?	<a href={ link } target='_blank' style={{ textDecoration: 'none' }} { ...this.props }>
 					{ children }
 				</a>
-			:	<Link to={ link }>{ children }</Link>
+			:	<Link to={ link } { ...this.props }>{ children }</Link>
 		)
 	}
 }
