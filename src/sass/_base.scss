@@ -5,6 +5,15 @@ $mango: #f25c05;
 	font-family: Roboto, Helvetica, sans-serif;
 }
 
+::selection {
+	background-color: $mango;
+	color: #fff;
+}
+
+h1, h2 {
+	font-family: "Roboto Slab", Georgia, serif;
+}
+
 .text-center {
 	text-align: center !important;
 }

@@ -15,6 +15,9 @@ const theme = createMuiTheme({
 			contrastText: '#fff',
 		},
 	},
+	typography: {
+		fontFamily: ['Roboto Slab',],
+	},
 })
 
 export default theme

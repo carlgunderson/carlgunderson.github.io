@@ -21,7 +21,6 @@ const styles = {
 	},
 	content: {
 		marginTop: 'calc(50vh - 224px)',
-		paddingLeft: window.innerWidth < 600 ? '16px' : '24px',
 	},
 	gridListWrapper: {
 		display: 'flex',
@@ -33,12 +32,17 @@ const styles = {
 		flexWrap: 'nowrap',
 		transform: 'translateZ(0)',
 		overflowY: 'auto',
+		paddingLeft: window.innerWidth < 600 ? '16px' : '24px',
 	},
 	gridListTile: {
 		overflow: 'visible',
 	},
 	gridListTileRoot: {
 		height: '100% !important',
+
+		'&:last-child': {
+			paddingRight: window.innerWidth < 600 ? '16px !important' : '24px !important',
+		},
 	},
 	titleBar: {
 		background: 'linear-gradient(to top, rgba(0,0,0,0.7) 0%, rgba(0,0,0,0.3) 70%, rgba(0,0,0,0) 100%)',
@@ -50,7 +54,7 @@ const styles = {
 		height: '32px',
 
 		'&:hover': {
-
+			
 		}
 	},
 	footer: {
@@ -71,7 +75,7 @@ class App extends Component {
 				<CssBaseline />
 				<AppBar position='static'>
 					<Toolbar className={ classes.header }>
-						<Typography variant='h4'>carl gunderson</Typography>
+						<Typography variant='h4' component='h1' style={{ fontWeight: 400 }}>Carl Gunderson</Typography>
 						<div className={ classes.icons }>
 							<CustomLink external link='https://github.com/carlgunderson' style={{ height: '32px' }}>
 								<img src='../../../images/icon-github-32x32.png' width='32' height='32' style={{ marginRight: '15px' }} className={ classes.icon } />
@@ -80,7 +84,6 @@ class App extends Component {
 								<img src='../../../images/icon-linkedin-43x34.png' height='32' className={ classes.icon } />
 							</CustomLink>
 						</div>
-						<Hidden only='xs'><Typography variant='h4'>web development portfolio</Typography></Hidden>
 					</Toolbar>
 				</AppBar>
 				<div className={ classes.content }>
