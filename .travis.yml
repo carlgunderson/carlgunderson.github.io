@@ -1,7 +1,6 @@
 deploy:
   provider: pages
   skip_cleanup: true
-  github_token: e6499505951fdd26fef49d23de0ed56a20b534e5
   keep_history: true
   on:
     branch: github-pages
