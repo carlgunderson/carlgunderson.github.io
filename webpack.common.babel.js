@@ -9,7 +9,8 @@ export default {
 	output: {
 		path: path.resolve(__dirname, 'dist'),
 		// publicPath: '/dist/',
-		filename: '[hash].bundle.js',
+		// filename: '[hash].bundle.js',
+		filename: 'bundle.js'
 	},
 	module: {
 		rules: [
