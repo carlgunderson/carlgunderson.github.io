@@ -15,8 +15,8 @@
   "main": "src/index.js",
   "scripts": {
     "clean": "rm -r dist/*",
-    "start": "webpack-dev-server --config webpack.config.babel.js --hot --progress --colors",
-    "build": "webpack --config webpack.config.babel.js --mode=production --progress --colors",
+    "start": "webpack-dev-server --config webpack.dev.babel.js --hot --progress --colors",
+    "build": "webpack --config webpack.prod.babel.js --mode=production --progress --colors",
     "styles": "node-sass sass/index.scss dist/styles.css",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
@@ -37,7 +37,8 @@
     "style-loader": "^0.23.1",
     "webpack": "^4.35.0",
     "webpack-cli": "^3.3.5",
-    "webpack-dev-server": "^3.7.2"
+    "webpack-dev-server": "^3.7.2",
+    "webpack-merge": "^4.2.1"
   },
   "dependencies": {
     "@material-ui/core": "^3.9.3",

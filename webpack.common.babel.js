@@ -5,13 +5,12 @@ import HtmlWebpackPlugin from 'html-webpack-plugin'
 
 export default {
 	entry: ['babel-polyfill', './src/index.js'],
-	// target: 'node',
+	target: 'node',
 	output: {
 		path: path.resolve(__dirname, 'dist'),
-		// publicPath: '/dist/',
+		publicPath: '/dist/',
 		filename: '[hash].bundle.js',
 	},
-	devtool: 'inline-source-map',
 	module: {
 		rules: [
 			{
@@ -33,8 +32,4 @@ export default {
 		new CleanWebpackPlugin(),
 		new HtmlWebpackPlugin({ template: './index.html' }),
 	],
-	devServer: {
-		contentBase: path.join(__dirname, './'),
-		port: 9000,
-	},
 }
