@@ -80,27 +80,20 @@ const styles = {
 	},
 }
 
-class ExperienceCard extends Component {
-
-	render() {
-		let { classes, title, description, image, link } = this.props
-
-		return (
-			<Card className={ classes.card }>
-				<CustomLink link={ link } external>
-					<CardMedia className={ classes.image } image={ image } />
-					<div className={ classes.iconContainer }>
-						<OpenInNewIcon color='inherit' fontSize='large' />
-					</div>
-					<CardContent className={ classes.content }>
-						<Typography variant='h5' component='h3' style={{ fontWeight: 300 }}>{ title }</Typography>
-						<Typography style={{ fontFamily: 'Roboto' }}><strong>{ description }</strong></Typography>
-						<div className={ classes.arrow }></div>
-					</CardContent>
-				</CustomLink>
-			</Card>
-		)
-	}
-}
+const ExperienceCard = ({ classes, description, image, link, title }) => (
+	<Card className={ classes.card }>
+		<CustomLink link={ link } external>
+			<CardMedia className={ classes.image } image={ image } />
+			<div className={ classes.iconContainer }>
+				<OpenInNewIcon color='inherit' fontSize='large' />
+			</div>
+			<CardContent className={ classes.content }>
+				<Typography variant='h5' component='h3' style={{ fontWeight: 300 }}>{ title }</Typography>
+				<Typography style={{ fontFamily: 'Roboto' }}><strong>{ description }</strong></Typography>
+				<div className={ classes.arrow }></div>
+			</CardContent>
+		</CustomLink>
+	</Card>
+)
 
 export default withStyles(styles)(ExperienceCard)
