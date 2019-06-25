@@ -5,10 +5,10 @@ import HtmlWebpackPlugin from 'html-webpack-plugin'
 
 export default {
 	entry: ['babel-polyfill', './src/index.js'],
-	target: 'node',
+	// target: 'node',
 	output: {
 		path: path.resolve(__dirname, 'dist'),
-		publicPath: '/dist/',
+		// publicPath: '/dist/',
 		filename: '[hash].bundle.js',
 	},
 	module: {
