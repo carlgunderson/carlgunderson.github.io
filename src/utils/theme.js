@@ -1,6 +1,6 @@
-import { createMuiTheme } from '@material-ui/core/styles'
+import { createTheme } from '@material-ui/core/styles'
 
-const theme = createMuiTheme({
+const theme = createTheme({
 	palette: {
 		primary: {
 			light: '#fff',
@@ -14,9 +14,15 @@ const theme = createMuiTheme({
 			dark: '#b82800',
 			contrastText: '#fff',
 		},
+		text: {
+			primary: 'rgba(0, 0, 0, 0.87)',
+			secondary: 'rgba(0, 0, 0, 0.54)',
+			disabled: 'rgba(0, 0, 0, 0.38)',
+			hint: 'rgba(0, 0, 0, 0.38)',
+		}
 	},
 	typography: {
-		fontFamily: ['Roboto Slab',],
+		fontFamily: 'Roboto Slab',
 	},
 })
 

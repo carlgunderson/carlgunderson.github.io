@@ -1,4 +1,4 @@
-import React, { Component } from 'react'
+import React from 'react'
 import { withStyles } from '@material-ui/core/styles'
 import Card from '@material-ui/core/Card'
 import CardContent from '@material-ui/core/CardContent'
@@ -88,8 +88,15 @@ const ExperienceCard = ({ classes, description, image, link, title }) => (
 				<OpenInNewIcon color='inherit' fontSize='large' />
 			</div>
 			<CardContent className={ classes.content }>
-				<Typography variant='h5' component='h3' style={{ fontWeight: 300 }}>{ title }</Typography>
-				<Typography style={{ fontFamily: 'Roboto' }}><strong>{ description }</strong></Typography>
+				<Typography
+					variant='h5'
+					component='h3'
+					style={{ color: '#333', fontWeight: 300 }}
+					children={ title }
+				/>
+				<Typography style={{ color: '#333', fontFamily: 'Roboto' }}>
+					<strong>{ description }</strong>
+				</Typography>
 				<div className={ classes.arrow }></div>
 			</CardContent>
 		</CustomLink>

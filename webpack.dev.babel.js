@@ -6,7 +6,7 @@ export default merge(common, {
 	mode: 'development',
 	devtool: 'inline-source-map',
 	devServer: {
-		contentBase: path.join(__dirname, './'),
+		static: path.join(__dirname, './'),
 		port: 9000,
 	}
 })

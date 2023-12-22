@@ -1,23 +1,27 @@
 import path from 'path'
-import webpack from 'webpack'
-import CleanWebpackPlugin from 'clean-webpack-plugin'
 import HtmlWebpackPlugin from 'html-webpack-plugin'
 
 export default {
-	entry: ['babel-polyfill', './src/index.js'],
+	entry: { index: './src/index.js' },
 	// target: 'node',
 	output: {
 		path: path.resolve(__dirname, 'dist'),
+		clean: true,
 		// publicPath: '/dist/',
-		// filename: '[hash].bundle.js',
-		filename: 'bundle.js'
+		filename: '[name].[contenthash].js',
+		// filename: 'bundle.js'
 	},
 	module: {
 		rules: [
 			{
 				test: /\.(js|jsx)$/,
 				exclude: /node_modules/,
-				use: ['babel-loader'],
+				use: {
+					loader: 'babel-loader',
+					options: {
+						presets: ['@babel/preset-env','@babel/preset-react'],
+					},
+				},
 			},
 			{
 				test: /\.scss$/,
@@ -29,8 +33,6 @@ export default {
 		extensions: ['*', '.js', '.jsx'],
 	},
 	plugins: [
-		new webpack.HotModuleReplacementPlugin(),
-		new CleanWebpackPlugin(),
 		new HtmlWebpackPlugin({ template: './index.html' }),
 	],
 }

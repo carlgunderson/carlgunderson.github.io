@@ -1,10 +1,11 @@
-import 'babel-polyfill'
-import React from 'react'
-import { render } from 'react-dom'
+import React, { StrictMode } from 'react'
+import { createRoot } from 'react-dom/client'
 import { BrowserRouter as Router } from 'react-router-dom'
 
 import App from './components/App'
 
-render(<Router><App /></Router>, document.querySelector('#app-root'))
+const container = document.getElementById('app-root')
 
-// module.hot.accept()
+const root = createRoot(container)
+
+root.render(<StrictMode><Router><App /></Router></StrictMode>)

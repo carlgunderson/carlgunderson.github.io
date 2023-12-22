@@ -1,13 +1,12 @@
-import React, { Component } from 'react'
-import { withStyles } from '@material-ui/core/styles'
-import MuiThemeProvider from '@material-ui/core/styles/MuiThemeProvider'
+import React from 'react'
+import { ThemeProvider as MuiThemeProvider, withStyles } from '@material-ui/core/styles'
 import CssBaseline from '@material-ui/core/CssBaseline'
 import AppBar from '@material-ui/core/AppBar'
 import Toolbar from '@material-ui/core/Toolbar'
 import Typography from '@material-ui/core/Typography'
 import Hidden from '@material-ui/core/Hidden'
-import GridList from '@material-ui/core/GridList'
-import GridListTile from '@material-ui/core/GridListTile'
+import ImageList from '@material-ui/core/ImageList'
+import ImageListItem from '@material-ui/core/ImageListItem'
 
 import CustomLink from '../Link'
 import ExperienceCard from '../ExperienceCard'
@@ -22,22 +21,22 @@ const styles = {
 	content: {
 		marginTop: 'calc(50vh - 224px)',
 	},
-	gridListWrapper: {
+	imageListWrapper: {
 		display: 'flex',
 		flexWrap: 'wrap',
 		justifyContent: 'space-around',
 	},
-	gridList: {
+	imageList: {
 		width: '100%',
 		flexWrap: 'nowrap',
 		transform: 'translateZ(0)',
 		overflowY: 'auto',
 		paddingLeft: window.innerWidth < 600 ? '16px' : '24px',
 	},
-	gridListTile: {
+	imageListItem: {
 		overflow: 'visible',
 	},
-	gridListTileRoot: {
+	imageListItemRoot: {
 		height: '100% !important',
 
 		'&:last-child': {
@@ -83,51 +82,58 @@ const App = ({ classes }) => (
 			</Toolbar>
 		</AppBar>
 		<div className={ classes.content }>
-			<div className={ classes.gridListWrapper }>
-				<GridList className={ classes.gridList } cols={ window.innerWidth < 600 ? 1.2 : 2.5 }>
-				<GridListTile classes={{ root: classes.gridListTileRoot, tile: classes.gridListTile }}>
+			<div className={ classes.imageListWrapper }>
+				<ImageList className={ classes.imageList } cols={ window.innerWidth < 600 ? 1.2 : 2.5 }>
+					<ImageListItem classes={{ root: classes.imageListItemRoot, item: classes.imageListItem }}>
+						<ExperienceCard
+							link='https://member.lunadna.com'
+							image='../images/luna-my-data.png'
+							title='Luna (DNA)'
+							description='Lead Front-end Engineer' />
+					</ImageListItem>
+					<ImageListItem classes={{ root: classes.imageListItemRoot, item: classes.imageListItem }}>
 						<ExperienceCard
 							link='https://www.skinnyfit.com'
 							image='../images/card-skinnyfit-full.jpg'
 							title='SkinnyFit'
 							description='Senior Web Developer' />
-					</GridListTile>
-					<GridListTile classes={{ root: classes.gridListTileRoot, tile: classes.gridListTile }}>
+					</ImageListItem>
+					{ /* <ImageListItem classes={{ root: classes.imageListItemRoot, item: classes.imageListItem }}>
 						<ExperienceCard
 							link='https://www.footgod.com'
 							image='../images/card-footgod-full.jpg'
 							title='FootGod'
 							description='Senior Web Developer' />
-					</GridListTile>
-					<GridListTile classes={{ root: classes.gridListTileRoot, tile: classes.gridListTile }}>
+					</ImageListItem> */ }
+					<ImageListItem classes={{ root: classes.imageListItemRoot, item: classes.imageListItem }}>
 						<ExperienceCard
 							link='https://www.govx.com'
 							image='../images/card-govx-full.jpg'
 							title='GovX'
 							description='Senior Web Developer' />
-					</GridListTile>
-					<GridListTile classes={{ root: classes.gridListTileRoot, tile: classes.gridListTile }}>
+					</ImageListItem>
+					<ImageListItem classes={{ root: classes.imageListItemRoot, item: classes.imageListItem }}>
 						<ExperienceCard
 							link='https://start.att.net/exclusive/uverse/uverse-tv'
 							image='../images/card-uverse-full.jpg'
 							title='U-verse'
 							description='Senior Web Developer' />
-					</GridListTile>
-					<GridListTile classes={{ root: classes.gridListTileRoot, tile: classes.gridListTile }}>
+					</ImageListItem>
+					<ImageListItem classes={{ root: classes.imageListItemRoot, item: classes.imageListItem }}>
 						<ExperienceCard
 							link='https://www.healthpartners.com/hp/index.html'
 							image='../images/card-hp-full.jpg'
 							title='HealthPartners'
 							description='Front-end Web Developer' />
-					</GridListTile>
-					<GridListTile classes={{ root: classes.gridListTileRoot, tile: classes.gridListTile }}>
+					</ImageListItem>
+					<ImageListItem classes={{ root: classes.imageListItemRoot, item: classes.imageListItem }}>
 						<ExperienceCard
 							link='https://www.digi.com'
 							image='../images/card-digi-full.jpg'
 							title='Digi'
 							description='Applications Developer / Web Designer' />
-					</GridListTile>
-				</GridList>
+					</ImageListItem>
+				</ImageList>
 			</div>
 		</div>
 		<div className={ classes.footer }>

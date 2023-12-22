@@ -12,11 +12,11 @@
   "bugs": {
     "url": "https://github.com/carlgunderson/carlgunderson.github.io/issues"
   },
-  "main": "src/index.js",
+  "private": true,
   "scripts": {
     "clean": "rm -r dist/*",
-    "start": "webpack-dev-server --config webpack.dev.babel.js --hot --progress --colors",
-    "build": "webpack --config webpack.prod.babel.js --mode=production --progress --colors",
+    "start": "webpack serve --config webpack.dev.babel.js",
+    "build": "webpack --config webpack.prod.babel.js --mode=production",
     "styles": "node-sass sass/index.scss dist/styles.css",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
@@ -25,29 +25,27 @@
     "@babel/preset-env": "^7.4.5",
     "@babel/preset-react": "^7.0.0",
     "@babel/register": "^7.4.4",
+    "@webpack-cli/serve": "^2.0.5",
     "babel-loader": "^8.0.6",
-    "babel-polyfill": "^7.0.0-beta.3",
-    "clean-webpack-plugin": "^2.0.2",
-    "css-loader": "^2.1.1",
+    "css-loader": "^6.8.1",
     "eslint": "^5.16.0",
     "eslint-plugin-react": "^7.14.2",
     "html-webpack-plugin": "^5.5.0",
-    "node-sass": "^7.0.3",
-    "sass-loader": "^7.1.0",
-    "style-loader": "^0.23.1",
-    "webpack": "^4.35.0",
-    "webpack-cli": "^3.3.12",
-    "webpack-dev-server": "^4.11.1",
-    "webpack-merge": "^4.2.1"
+    "node-sass": "^9.0.0",
+    "sass-loader": "^13.3.2",
+    "style-loader": "^3.3.3",
+    "webpack": "^5.89.0",
+    "webpack-cli": "^5.1.4",
+    "webpack-dev-server": "^4.15.1",
+    "webpack-merge": "^5.10.0"
   },
   "dependencies": {
     "@material-ui/core": "^4.12.4",
     "@material-ui/icons": "^4.11.3",
     "@material-ui/lab": "^3.0.0-alpha.30",
     "@material-ui/styles": "^3.0.0-alpha.10",
-    "react": "^16.8.6",
-    "react-dom": "^16.8.6",
-    "react-router": "^4.3.1",
-    "react-router-dom": "^4.3.1"
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "react-router-dom": "^6.21.1"
   }
 }
