@@ -95,7 +95,7 @@ const App = ({ classes }) => (
 						<ExperienceCard
 							link='https://www.skinnyfit.com'
 							image='../images/card-skinnyfit-full.jpg'
-							title='SkinnyFit'
+							title='Smashtech'
 							description='Senior Web Developer' />
 					</ImageListItem>
 					{ /* <ImageListItem classes={{ root: classes.imageListItemRoot, item: classes.imageListItem }}>
