@@ -8,8 +8,8 @@ export default {
 		path: path.resolve(__dirname, 'dist'),
 		clean: true,
 		// publicPath: '/dist/',
-		filename: '[name].[contenthash].js',
-		// filename: 'bundle.js'
+		// filename: '[name].[contenthash].js',
+		filename: 'bundle.js'
 	},
 	module: {
 		rules: [
