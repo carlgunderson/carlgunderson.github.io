@@ -28,6 +28,16 @@ jobs:
       url: ${{ steps.deployment.outputs.page_url }}
     runs-on: ubuntu-latest
     steps:
+      - name: Write key file
+        run: | 
+          echo $PRIVATE_KEY > private-key.pem
+        env:
+          PRIVATE_KEY: ${{ secrets.PRIVATE_KEY }}
+      - name: Write cert file
+        run: | 
+          echo $PRIVATE_CERT > private-cert.pem
+        env:
+          PRIVATE_CERT: ${{ secrets.PRIVATE_CERT }}
       - name: Checkout
         uses: actions/checkout@v4
       - name: Set up Node

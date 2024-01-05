@@ -14,6 +14,14 @@ const certPath = path.join(documentsPath, 'localhost.pem')
 export default defineConfig(({ command, mode }) => {
 	const env = loadEnv(mode, process.cwd(), '')
 
+	const key = env.NODE_ENV === 'development'
+		? fs.readFileSync(keyPath)
+		: fs.readFileSync('private-key.pem')
+
+	const cert = env.NODE_ENV === 'development'
+		? fs.readFileSync(certPath)
+		: fs.readFileSync('private-cert.pem')
+
 	let server = {
 		// origin: process.env.API_URL,
 		// host: process.env.API_URL,
@@ -22,8 +30,8 @@ export default defineConfig(({ command, mode }) => {
 		open: true,
 		strictPort: true,
 		https: {
-			key: fs.readFileSync(keyPath),
-			cert: fs.readFileSync(certPath),
+			key,
+			cert,
 		},
 	}
 
