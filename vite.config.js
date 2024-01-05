@@ -52,8 +52,7 @@ export default defineConfig(({ command, mode }) => {
 			// 	// overwrite default .html entry
 			// 	input: '/src/index.jsx',
 			// },
-			outDir: '.',
-			// outDir: path.join(__dirname, 'dist'),
+			outDir: path.join(__dirname, 'dist'),
 			modulePreload: {
 				polyfill: false,
 			},
