@@ -16,11 +16,11 @@ export default defineConfig(({ command, mode }) => {
 
 	const key = env.NODE_ENV === 'development'
 		? fs.readFileSync(keyPath)
-		: fs.readFileSync('./private-key.pem')
+		: fs.readFileSync('/private-key.pem')
 
 	const cert = env.NODE_ENV === 'development'
 		? fs.readFileSync(certPath)
-		: fs.readFileSync('./private-cert.pem')
+		: fs.readFileSync('/private-cert.pem')
 
 	let server = {
 		// origin: process.env.API_URL,
