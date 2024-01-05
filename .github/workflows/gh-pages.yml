@@ -3,7 +3,7 @@ name: Deploy
 on:
   push:
     branches:
-      - github-pages
+      - gh-pages
 
 jobs:
   build:
@@ -44,7 +44,7 @@ jobs:
 
       - name: Deploy to GitHub Pages
         uses: peaceiris/actions-gh-pages@v3
-        if: github.ref == 'refs/heads/github-pages'
+        if: github.ref == 'refs/heads/gh-pages'
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           publish_dir: ./dist
