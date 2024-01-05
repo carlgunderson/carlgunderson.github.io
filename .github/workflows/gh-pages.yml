@@ -1,5 +1,5 @@
 # Simple workflow for deploying static content to GitHub Pages
-name: Deploy static content to Pages
+name: Deploy to GitHub Pages
 
 on:
   # Runs on pushes targeting the default branch
@@ -38,6 +38,20 @@ jobs:
           echo $PRIVATE_CERT > private-cert.pem
         env:
           PRIVATE_CERT: ${{ secrets.PRIVATE_CERT }}
+      - name: Verify key files
+        run: | 
+          echo key: ${{ hashFiles('private-key.pem') }}
+          echo cert: ${{ hashFiles('private-cert.pem') }}
+      # - name: Test file existence
+      #   run: | 
+      #     echo $PRIVATE_KEY > private-key.pem
+      #   stat:
+      #     path: private-key.pem
+      #   register: key_file
+    
+      # - debug:
+      #     msg: "The file exists"
+      #     when: key_file.stat.exists
       - name: Checkout
         uses: actions/checkout@v4
       - name: Set up Node
