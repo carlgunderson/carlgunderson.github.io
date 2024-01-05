@@ -19,7 +19,7 @@
     "start": "npm run dev",
     "dev": "vite",
     "build": "vite build",
-    "serve": "vite preview"
+    "preview": "vite preview --port 8081"
   },
   "dependencies": {
     "@emotion/babel-plugin": "^11.10.2",
