@@ -26,6 +26,13 @@ html {
 	line-height: max(.75em, .25em + 1cqw) !important;
 }
 
+.tile-display-name {
+	container: tile / normal;
+	font-size: max(1.5em, 1em + 1.5cqw) !important;
+	line-height: max(1.5em, .75em + .5cqw) !important;
+	margin-bottom: max(16px, 1.5cqw) !important;
+}
+
 .tile {
 	background-color: white;
 	background-size: cover;

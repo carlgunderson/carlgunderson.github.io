@@ -143,6 +143,7 @@ const CompanyItem = ({ activeIdx, idx, item, onClick, onNav }) => {
 						/>
 					</div>
 					<Typography
+						className='tile-display-name'
 						variant='h2'
 						align='center'
 						fontWeight={ 600 }
@@ -246,11 +247,9 @@ const SelectedItem = ({ item, onClear, onMount }) => {
 						src={ item.logoUrl }
 						alt=''
 						style={{
-							position: 'relative',
-							top: '0px',
 							width: '100px',
 							transition: 'all 0.6s ease',
-							transitionProperty: 'transform, opacity',
+							transitionProperty: 'transform',
 						}}
 					/>
 				</Fade>
@@ -320,7 +319,12 @@ const SelectedItem = ({ item, onClear, onMount }) => {
 						/>
 						<img
 							src={ item.bgUrl }
-							style={{ width: '100%', maxHeight: '200px', maxWidth: '100%', objectFit: 'contain' }}
+							style={{
+								width: '100%',
+								maxHeight: '300px',
+								maxWidth: '100%',
+								objectFit: 'contain',
+							}}
 						/>
 						<Typography
 							variant='h4'
@@ -343,6 +347,14 @@ const SelectedItem = ({ item, onClear, onMount }) => {
 						<Typography
 							variant='body2'
 							children={ item.roleSummary }
+						/>
+						<hr
+							style={{
+								marginTop: '40px',
+								border: '0',
+								height: '1px',
+								backgroundImage: `linear-gradient(to right, rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.1))`,
+							}}
 						/>
 					</Box>
 				</Box>
