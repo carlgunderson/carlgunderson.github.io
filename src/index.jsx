@@ -8,4 +8,10 @@ const container = document.getElementById('app-root')
 
 const root = createRoot(container)
 
-root.render(<StrictMode><Router><App /></Router></StrictMode>)
+root.render(
+	<StrictMode>
+		<Router>
+			<App />
+		</Router>
+	</StrictMode>
+)
