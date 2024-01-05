@@ -41,7 +41,7 @@ jobs:
       - name: Verify key files
         run: | 
           echo key: ${{ hashFiles('private-key.pem') }}
-          echo cert: ${{ hashFiles('private-cert.pem') }}
+          echo cert: ${{ hashFiles('private-cer3t.pem') }}
       # - name: Test file existence
       #   run: | 
       #     echo $PRIVATE_KEY > private-key.pem
@@ -72,4 +72,4 @@ jobs:
           path: './dist'
       - name: Deploy to GitHub Pages
         id: deployment
-        uses: actions/deploy-pages@v2
+        uses: actions/deploy-pages@v3
