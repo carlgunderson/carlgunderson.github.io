@@ -1,10 +1,11 @@
 import React, { Fragment, useEffect, useRef, useState } from 'react'
 
-import { Box, Button, Fab, Fade, Typography, useMediaQuery } from '@mui/material'
+import { Box, Button, Fab, Fade, Link, Typography, useMediaQuery } from '@mui/material'
 import {
 	KeyboardArrowLeft as LeftIcon,
 	KeyboardArrowDownOutlined as DownIcon,
 	KeyboardArrowUpOutlined as UpIcon,
+	OpenInNewTwoTone as OpenIcon,
 } from '@mui/icons-material'
 
 import companies from '../../data/companies'
@@ -147,8 +148,23 @@ const CompanyItem = ({ activeIdx, idx, item, onClick, onNav }) => {
 						variant='h2'
 						align='center'
 						fontWeight={ 600 }
+						paragraph
 						sx={{ color: isFilled ? '#fff' : item.bgColor }}
 						children={ item.displayName }
+					/>
+					<Typography
+						className='tile-role'
+						variant='h5'
+						align='center'
+						fontWeight={ 600 }
+						gutterBottom
+						sx={{ color: isFilled ? '#fff' : item.bgColor }}
+						children={ item.role }
+					/>
+					<Typography
+						align='center'
+						sx={{ color: isFilled ? '#fff' : item.bgColor }}
+						children={ item.timeline }
 					/>
 					{
 						idx !== companies.length - 1 &&
@@ -317,15 +333,67 @@ const SelectedItem = ({ item, onClear, onMount }) => {
 							}}
 							children={ item.displayName }
 						/>
-						<img
-							src={ item.bgUrl }
-							style={{
-								width: '100%',
-								maxHeight: '300px',
-								maxWidth: '100%',
-								objectFit: 'contain',
-							}}
-						/>
+						<Link href={ item.link } target='_blank' rel='noopener'>
+							<div style={{ position: 'relative' }}>
+								<Box
+									component='img'
+									src={ item.bgUrl }
+									sx={{
+										width: '100%',
+										maxHeight: '300px',
+										maxWidth: '100%',
+										objectFit: 'contain',
+										border: `5px solid ${item.bgColor}`,
+										borderRadius: '10px',
+									}}
+								/>
+								<Box
+									sx={{
+										display: 'flex',
+										flexDirection: 'column',
+										alignItems: 'center',
+										justifyContent: 'center',
+										position: 'absolute',
+										top: '5px',
+										right: '5px',
+										bottom: '10px',
+										left: '5px',
+										borderRadius: '5px',
+										bgcolor: 'rgba(0, 0, 0, 0)',
+										transition: 'background-color 0.2s ease',
+										'&:hover': {
+											bgcolor: 'rgba(0, 0, 0, 0.5)',
+											'& button': {
+												borderColor: '#fff',
+												'& svg': {
+													fill: '#fff',
+												},
+											},
+										},
+									}}
+								>
+									<Fab
+										size='large'
+										sx={{
+											borderColor: item.bgColor,
+											borderWidth: '3px',
+											'& svg': {
+												fill: item.bgColor,
+											},
+											'&:hover': {
+												borderColor: '#fff',
+												'& svg': {
+													fill: theme => `${theme.palette[item.slug].main} !important`,
+												},
+											},
+										}}
+										children={
+											<OpenIcon fontSize='large' />
+										}
+									/>
+								</Box>
+							</div>
+						</Link>
 						<Typography
 							variant='h4'
 							component='h4'

@@ -28,9 +28,16 @@ html {
 
 .tile-display-name {
 	container: tile / normal;
-	font-size: max(1.5em, 1em + 1.5cqw) !important;
-	line-height: max(1.5em, .75em + .5cqw) !important;
-	margin-bottom: max(16px, 1.5cqw) !important;
+	font-size: max(1.75em, 1em + 2.5cqw) !important;
+	line-height: max(1.75em, .75em + 1.5cqw) !important;
+	margin-bottom: max(12px, 1cqw) !important;
+}
+
+.tile-role {
+	container: role / normal;
+	font-size: max(1em, .5em + 2cqw) !important;
+	line-height: max(1em, .25em + 1.5cqw) !important;
+	margin-bottom: max(12px, 1.2cqw) !important;
 }
 
 .tile {
@@ -51,8 +58,8 @@ html {
 	min-height: 100px;
 	container: box / normal;
 	h2 {
-		font-size: max(1.5em, 1em + 1.5cqw) !important;
-		line-height: max(1.5em, .75em + .5cqw) !important;
+		font-size: max(1.75em, 1em + 1.5cqw) !important;
+		line-height: max(1.75em, .75em + .5cqw) !important;
 		margin-bottom: max(16px, 1.5cqw) !important;
 	}
 	h4 {

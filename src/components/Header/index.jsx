@@ -65,11 +65,10 @@ const Header = () => (
 					href='https://github.com/carlgunderson'
 					target='_blank'
 					rel='noopener'
-					sx={{ width: '32px', height: '32px', mr: '16px' }}
+					sx={{ height: '32px', mr: '16px' }}
 				>
 					<img
-						src='/images/icon-github-32x32.png'
-						width='32'
+						src='/images/github-mark.png'
 						height='32'
 						style={{ height: '32px' }}
 					/>
@@ -81,7 +80,7 @@ const Header = () => (
 					sx={{ height: '32px' }}
 				>
 					<img
-						src='/images/icon-linkedin-43x34.png'
+						src='/images/icon-linkedin.png'
 						height='32'
 						style={{ height: '32px' }}
 					/>
