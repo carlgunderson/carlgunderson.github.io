@@ -1,6 +1,6 @@
 import React, { Fragment, useEffect, useRef, useState } from 'react'
 
-import { Box, Button, Fab, Fade, Link, Typography, useMediaQuery } from '@mui/material'
+import { Box, Button, Chip, Fab, Fade, Link, Typography, useMediaQuery } from '@mui/material'
 import {
 	KeyboardArrowLeft as LeftIcon,
 	OpenInNewTwoTone as OpenIcon,
@@ -117,7 +117,7 @@ const SelectedItem = ({ item, onClear, onMount }) => {
 						className='content'
 						sx={{
 							maxWidth: '100%',
-							p: ['24px', '48px 64px'],
+							p: ['40px 24px', '48px 64px'],
 							overflowX: 'hidden',
 						}}
 					>
@@ -214,12 +214,53 @@ const SelectedItem = ({ item, onClear, onMount }) => {
 								</Box>
 							</div>
 						</Link>
+						<Box sx={{ mt: '24px' }}>
+							{
+								item.platforms.map(p => (
+									<Chip
+										key={ p }
+										label={ p }
+										variant='outlined'
+										sx={{
+											mr: '12px',
+											mb: '12px',
+											color: item.bgColor,
+											borderColor: item.bgColor,
+											'&:hover': {
+												borderColor: item.bgColor,
+											},
+											'& .MuiChip-label': {
+												color: item.bgColor,
+											},
+										}}
+									/>
+								))
+							}
+							{
+								item.industries.map(i => (
+									<Chip
+										key={ i }
+										label={ i }
+										variant='contained'
+										sx={{
+											mr: '12px',
+											mb: '12px',
+											bgcolor: item.bgColor,
+											borderColor: item.bgColor,
+											'& .MuiChip-label': {
+												color: '#fff',
+											},
+										}}
+									/>
+								))
+							}
+						</Box>
 						<Typography
 							className='tile-role'
 							variant='h4'
 							component='h4'
 							paragraph
-							sx={{ mt: '24px', lineHeight: ['1.5em', '1.35em'] }}
+							sx={{ mt: '8px', lineHeight: ['1.5em', '1.35em'] }}
 							children={ item.description }
 						/>
 						<Typography

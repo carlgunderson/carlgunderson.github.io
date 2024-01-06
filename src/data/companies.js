@@ -1,7 +1,7 @@
 const companies = [
 	{
 		slug: 'luna',
-		displayName: 'Luna (DNA)',
+		displayName: 'Luna',
 		industries: ['Life Sciences', 'Nonprofit'],
 		platforms: ['Web'],
 		link: 'https://www.lunadna.com',

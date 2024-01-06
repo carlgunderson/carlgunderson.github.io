@@ -13,6 +13,15 @@ const CompanyItem = ({ activeIdx, idx, item, onClick, onNav }) => {
 
 	const isFilled = !!['luna', 'smashtech'].includes(item.slug)
 
+	const handleNav = (e, direction) => {
+		e.stopPropagation()
+		onNav(direction)
+	}
+
+	const handleClick = e => {
+		onClick(item, tileRef.current)
+	}
+
 	return (
 		<Box
 			key={ item.slug }
@@ -27,9 +36,6 @@ const CompanyItem = ({ activeIdx, idx, item, onClick, onNav }) => {
 		>
 			<Fade in={ activeIdx === idx }>
 				<Box
-					tabIndex={ 0 }
-					onKeyDown={ e => e.key === 'Enter' && onClick(item, tileRef.current) }
-					onClick={ () => onClick(item, tileRef.current) }
 					sx={{
 						width: '100%',
 						height: ['calc(100vh - 280px)', 'calc(100vh - 164px)'],
@@ -44,93 +50,125 @@ const CompanyItem = ({ activeIdx, idx, item, onClick, onNav }) => {
 						justifyContent: 'center',
 						bgcolor: isFilled ? item.bgColor : '#fff',
 						color: isFilled ? '#fff' : item.bgColor,
-						cursor: 'pointer',
 						overflow: 'hidden',
 					}}
 				>
-					{
-						idx !== 0 &&
-						<Arrow direction='prev' item={ item } onClick={ onNav } isFilled={ isFilled } />
-					}
-					<div style={{ width: '100px' }}>
-						<Box
-							ref={ tileRef }
-							className='tile'
-							sx={{
-								width: ['48px', '100px'],
-								height: ['48px', '100px'],
-								m: '0 auto',
-								backgroundImage: `url(${item.logoUrl})`,
-								'&:after': {
-									content: '""',
-									display: 'block',
-									marginTop: '100%',
-								}
-							}}
+					<Arrow
+						direction='prev'
+						item={ item }
+						onClick={ handleNav }
+						isDisabled={ idx === 0 }
+						isFilled={ isFilled }
+					/>
+					<Box
+						tabIndex={ 0 }
+						onClick={ e => handleClick(e) }
+						onKeyDown={ e => e.key === 'Enter' && handleClick(e) }
+						sx={{
+							display: 'flex',
+							flexDirection: 'column',
+							alignItems: 'center',
+							justifyContent: 'center',
+							p: '100px',
+							cursor: 'pointer',
+						}}
+					>
+						<div style={{ width: '100px' }}>
+							<Box
+								ref={ tileRef }
+								className='tile'
+								sx={{
+									width: ['48px', '100px'],
+									height: ['48px', '100px'],
+									m: '0 auto',
+									backgroundImage: `url(${item.logoUrl})`,
+									'&:after': {
+										content: '""',
+										display: 'block',
+										marginTop: '100%',
+									}
+								}}
+							/>
+						</div>
+						<Typography
+							className='tile-display-name'
+							variant='h2'
+							align='center'
+							fontWeight={ 600 }
+							sx={{ color: isFilled ? '#fff' : item.bgColor }}
+							children={ item.displayName }
 						/>
-					</div>
-					<Typography
-						className='tile-display-name'
-						variant='h2'
-						align='center'
-						fontWeight={ 600 }
-						sx={{ color: isFilled ? '#fff' : item.bgColor }}
-						children={ item.displayName }
+						<Typography
+							className='tile-role'
+							variant='h5'
+							align='center'
+							fontWeight={ 600 }
+							gutterBottom
+							sx={{ color: isFilled ? '#fff' : item.bgColor }}
+							children={ item.role }
+						/>
+						<Typography
+							align='center'
+							sx={{ color: isFilled ? '#fff' : item.bgColor }}
+							children={ item.timeline }
+						/>
+					</Box>
+					<Arrow
+						direction='next'
+						isDisabled={ idx === companies.length - 1 }
+						isFilled={ isFilled }
+						item={ item }
+						onClick={ handleNav }
 					/>
-					<Typography
-						className='tile-role'
-						variant='h5'
-						align='center'
-						fontWeight={ 600 }
-						gutterBottom
-						sx={{ color: isFilled ? '#fff' : item.bgColor }}
-						children={ item.role }
-					/>
-					<Typography
-						align='center'
-						sx={{ color: isFilled ? '#fff' : item.bgColor }}
-						children={ item.timeline }
-					/>
-					{
-						idx !== companies.length - 1 &&
-						<Arrow direction='next' isFilled={ isFilled } item={ item } onClick={ onNav } />
-					}
 				</Box>
 			</Fade>
 		</Box>
 	)
 }
 
-const Arrow = ({ direction, isFilled, item, onClick }) => (
+const Arrow = ({ direction, isDisabled, isFilled, item, onClick }) => (
 	<Fade in>
 		<Box
 			sx={{
 				position: 'absolute',
-				top: direction === 'prev' ? '40px' : 'auto',
-				bottom: direction === 'next' ? '40px' : 'auto',
+				top: direction === 'prev' ? ['20px', '40px'] : 'auto',
+				bottom: direction === 'next' ? ['20px', '40px'] : 'auto',
 			}}
 		>
 			<Fab
+				className='fab-btn'
 				size='large'
-				onClick={ e => { e.stopPropagation(); onClick(direction) } }
+				disabled={ isDisabled }
+				onClick={ e => {
+					if (isDisabled)
+						return
+					onClick(e, direction)
+				} }
 				sx={{
 					borderColor: isFilled ? '#fff' : item.bgColor,
-					'&:hover svg': { fill: theme => theme.palette[item.slug].main },
+					'&:hover svg': {
+						fill: theme => isDisabled
+							? isFilled
+							? '#fff'
+							: item.bgColor
+							: theme.palette[item.slug].main,
+					},
+					'&.Mui-disabled': {
+						pointerEvents: 'all',
+					},
 				}}
 				children={
 					direction === 'next'
 					? <DownIcon
 							size='large'
 							sx={{
-								borderColor: isFilled ? '#fff' : item.bgColor,
-								fill: isFilled ? '#fff' :`${item.bgColor} !important`,
+								fill: isFilled ? '#fff' :item.bgColor,
 							}}
 						/>
 					: <UpIcon
 							size='large'
 							sx={{
-								borderColor: isFilled ? '#fff' : item.bgColor,
-								fill: isFilled ? '#fff' :`${item.bgColor} !important`,
+								fill: isFilled ? '#fff' :item.bgColor,
 							}}
 						/>
 				}
