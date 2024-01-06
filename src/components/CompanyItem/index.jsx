@@ -126,55 +126,67 @@ const CompanyItem = ({ activeIdx, idx, item, onClick, onNav }) => {
 	)
 }
 
-const Arrow = ({ direction, isDisabled, isFilled, item, onClick }) => (
-	<Fade in>
-		<Box
-			sx={{
-				position: 'absolute',
-				top: direction === 'prev' ? ['20px', '40px'] : 'auto',
-				bottom: direction === 'next' ? ['20px', '40px'] : 'auto',
-			}}
-		>
-			<Fab
-				className='fab-btn'
-				size='large'
-				disabled={ isDisabled }
-				onClick={ e => {
-					if (isDisabled)
-						return
-					onClick(e, direction)
-				} }
+const Arrow = ({ direction, isDisabled, isFilled, item, onClick }) => {
+	const isIos = () => /iPhone|iPod|iPad/i.test(window.navigator.userAgent)
+	const isSafari = navigator.userAgent.includes('Safari')
+		&& !navigator.userAgent.includes('Chrome')
+
+	const isIosSafari = isIos && isSafari
+
+	return (
+		<Fade in>
+			<Box
 				sx={{
-					borderColor: isFilled ? '#fff' : item.bgColor,
-					'&:hover svg': {
-						fill: theme => isDisabled
-							? isFilled
-							? '#fff'
-							: item.bgColor
-							: theme.palette[item.slug].main,
-					},
-					'&.Mui-disabled': {
-						pointerEvents: 'all',
-					},
+					position: 'absolute',
+					top: direction === 'prev'
+						? [isIosSafari ? '40px' : '20px', '40px']
+						: 'auto',
+					bottom: direction === 'next'
+						? [isIosSafari ? '40px' : '20px', '40px']
+						: 'auto',
 				}}
-				children={
-					direction === 'next'
-					? <DownIcon
-							size='large'
-							sx={{
-								fill: isFilled ? '#fff' :item.bgColor,
-							}}
-						/>
-					: <UpIcon
-							size='large'
-							sx={{
-								fill: isFilled ? '#fff' :item.bgColor,
-							}}
-						/>
-				}
-			/>
-		</Box>
-	</Fade>
-)
+			>
+				<Fab
+					className='fab-btn'
+					size='large'
+					disabled={ isDisabled }
+					onClick={ e => {
+						if (isDisabled)
+							return
+						onClick(e, direction)
+					} }
+					sx={{
+						borderColor: isFilled ? '#fff' : item.bgColor,
+						'&:hover svg': {
+							fill: theme => isDisabled
+								? isFilled
+								? '#fff'
+								: item.bgColor
+								: theme.palette[item.slug].main,
+						},
+						'&.Mui-disabled': {
+							pointerEvents: 'all',
+						},
+					}}
+					children={
+						direction === 'next'
+						? <DownIcon
+								size='large'
+								sx={{
+									fill: isFilled ? '#fff' :item.bgColor,
+								}}
+							/>
+						: <UpIcon
+								size='large'
+								sx={{
+									fill: isFilled ? '#fff' :item.bgColor,
+								}}
+							/>
+					}
+				/>
+			</Box>
+		</Fade>
+	)
+}
 
 export default CompanyItem
