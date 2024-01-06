@@ -45,7 +45,7 @@ const SelectedItem = ({ item, onClear, onMount }) => {
 					display: 'flex',
 					flexDirection: 'column',
 					alignItems: 'center',
-					justifyContent: ['flex-start', 'center'],
+					justifyContent: ['flex-start'],
 					gap: '24px',
 					cursor: 'pointer',
 				}}
@@ -58,7 +58,7 @@ const SelectedItem = ({ item, onClear, onMount }) => {
 						sx={{
 							width: ['48px', '100px'],
 							height: ['48px', '100px'],
-							mt: ['24px', '0px'],
+							mt: ['24px'],
 							transition: 'all 0.6s ease',
 							transitionProperty: 'transform',
 						}}
@@ -119,6 +119,7 @@ const SelectedItem = ({ item, onClear, onMount }) => {
 							/>
 						</Box>
 						<Typography
+							className='tile-display-name'
 							variant='h2'
 							fontWeight={ 600 }
 							sx={{
@@ -171,8 +172,9 @@ const SelectedItem = ({ item, onClear, onMount }) => {
 										size='large'
 										sx={{
 											borderColor: item.bgColor,
+											bgcolor: item.bgColor,
 											'& svg': {
-												fill: item.bgColor,
+												fill: '#fff',
 											},
 											'&:hover': {
 												borderColor: '#fff',
@@ -189,6 +191,7 @@ const SelectedItem = ({ item, onClear, onMount }) => {
 							</div>
 						</Link>
 						<Typography
+							className='tile-role'
 							variant='h4'
 							component='h4'
 							paragraph

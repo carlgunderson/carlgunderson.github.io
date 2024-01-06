@@ -16,14 +16,14 @@ html {
 
 .container-header * {
 	container: header / normal;
-	font-size: max(1.25em, 1em + 1cqw) !important;
-	line-height: max(1em, .75em + .2cqw) !important;
-	margin-bottom: max(12px, .6cqw) !important;
+	font-size: max(1.35em, 1em + 1.25cqw) !important;
+	line-height: max(1em, .75em + 1cqw) !important;
+	margin-bottom: max(12px, .75cqw) !important;
 }
 
 .container-subheader * {
 	container: subheader / normal;
-	font-size: max(.75em, .25em + 1cqw) !important;
+	font-size: max(1em, .5em + 1cqw) !important;
 	line-height: max(.75em, .25em + 1cqw) !important;
 }
 
@@ -57,17 +57,6 @@ html {
 .box {
 	min-width: 100px;
 	min-height: 100px;
-	container: box / normal;
-	h2 {
-		font-size: max(1.5em, 1em + 1.75cqw) !important;
-		line-height: max(1.25em, .5em + 1cqw) !important;
-		margin-bottom: max(16px, 1.5cqw) !important;
-	}
-	h4 {
-		font-size: max(1.25em, 1em + 1cqw) !important;
-		line-height: max(1em, .75em + .2cqw) !important;
-		margin-bottom: max(12px, .6cqw) !important;
-	}
 }
 
 .content {
