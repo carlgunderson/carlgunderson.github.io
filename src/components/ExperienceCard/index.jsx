@@ -81,7 +81,7 @@ const ExperienceCard = ({ company }) => (
 					variant='h5'
 					component='h3'
 					sx={{ color: '#333', fontWeight: 300 }}
-					children={ company.title }
+					children={ company.displayName }
 				/>
 				<Typography sx={{ color: '#333', fontFamily: 'Roboto' }}>
 					<strong>{ company.description }</strong>
