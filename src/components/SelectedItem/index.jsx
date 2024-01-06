@@ -54,19 +54,37 @@ const SelectedItem = ({ item, onClear, onMount }) => {
 			>
 				<Fade in={ doShowLogo }>
 					<Box
-						component='img'
-						src={ item.logoUrl }
-						alt=''
 						sx={{
 							width: ['48px', '100px'],
 							height: ['48px', '100px'],
+							display: 'flex',
+							alignItems: 'center',
+							justifyContent: 'center',
 							mt: ['24px'],
+							bgcolor: '#fff',
 							boxShadow: isFilled ? 'none' : '0px 2px 1px -1px rgba(0,0,0,0.2), 0px 1px 1px 0px rgba(0,0,0,0.14), 0px 1px 3px 0px rgba(0,0,0,0.12)',
 							borderRadius: isFilled ? '0' : '10px',
-							transition: 'all 0.6s ease',
-							transitionProperty: 'transform',
 						}}
-					/>
+					>
+						<Box
+							component='img'
+							src={ item.logoUrl }
+							alt={ `${item.displayName} logo` }
+							sx={{
+								width: [
+									item.slug === 'govx' ? '40px' : '48px',
+									item.slug === 'govx' ? '80px' : '100px',
+								],
+								height: [
+									item.slug === 'govx' ? '40px' : '48px',
+									item.slug === 'govx' ? '80px' : '100px',
+								],
+								maxWidth: '100%',
+								maxHeight: '100%',
+								borderRadius: isFilled ? '0' : '10px',
+							}}
+						/>
+					</Box>
 				</Fade>
 				<Box
 					onClick={ e => e.stopPropagation() }
@@ -99,7 +117,7 @@ const SelectedItem = ({ item, onClear, onMount }) => {
 						className='content'
 						sx={{
 							maxWidth: '100%',
-							p: ['24px', '64px'],
+							p: ['24px', '48px 64px'],
 							overflowX: 'hidden',
 						}}
 					>
