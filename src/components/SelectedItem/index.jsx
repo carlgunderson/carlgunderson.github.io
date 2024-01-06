@@ -23,6 +23,8 @@ const SelectedItem = ({ item, onClear, onMount }) => {
 		setTimeout(() => setDoShowLogo(true), 700)
 	}, [])
 
+	const isFilled = !!['luna', 'smashtech'].includes(item.slug)
+
 	return (
 		<Fragment>
 			<Box
@@ -59,6 +61,8 @@ const SelectedItem = ({ item, onClear, onMount }) => {
 							width: ['48px', '100px'],
 							height: ['48px', '100px'],
 							mt: ['24px'],
+							boxShadow: isFilled ? 'none' : '0px 2px 1px -1px rgba(0,0,0,0.2), 0px 1px 1px 0px rgba(0,0,0,0.14), 0px 1px 3px 0px rgba(0,0,0,0.12)',
+							borderRadius: isFilled ? '0' : '10px',
 							transition: 'all 0.6s ease',
 							transitionProperty: 'transform',
 						}}
@@ -70,7 +74,7 @@ const SelectedItem = ({ item, onClear, onMount }) => {
 					className='box'
 					sx={{
 						boxShadow: '0px 2px 1px -1px rgba(0,0,0,0.2), 0px 1px 1px 0px rgba(0,0,0,0.14), 0px 1px 3px 0px rgba(0,0,0,0.12)',
-						borderRadius: '6px',
+						borderRadius: '10px',
 						overflow: 'scroll',
 						maxWidth: '700px',
 						backgroundColor: '#fff',
@@ -95,7 +99,8 @@ const SelectedItem = ({ item, onClear, onMount }) => {
 						className='content'
 						sx={{
 							maxWidth: '100%',
-							p: ['24px', '48px'],
+							p: ['24px', '64px'],
+							overflowX: 'hidden',
 						}}
 					>
 						<Box sx={{ mb: ['16px'] }}>
@@ -129,7 +134,7 @@ const SelectedItem = ({ item, onClear, onMount }) => {
 							}}
 							children={ item.displayName }
 						/>
-						<Link href={ item.link } target='_blank' rel='noopener'>
+						<Link href={ item.link } target='_blank' rel='noopener' tabIndex={ -1 }>
 							<div style={{ position: 'relative' }}>
 								<Box
 									component='img'
@@ -170,6 +175,7 @@ const SelectedItem = ({ item, onClear, onMount }) => {
 								>
 									<Fab
 										size='large'
+										tabIndex={ 0 }
 										sx={{
 											borderColor: item.bgColor,
 											bgcolor: item.bgColor,
@@ -195,7 +201,7 @@ const SelectedItem = ({ item, onClear, onMount }) => {
 							variant='h4'
 							component='h4'
 							paragraph
-							sx={{ mt: '24px' }}
+							sx={{ mt: '24px', lineHeight: ['1.5em', '1.35em'] }}
 							children={ item.description }
 						/>
 						<Typography
@@ -210,8 +216,9 @@ const SelectedItem = ({ item, onClear, onMount }) => {
 							children={ item.timeline }
 						/>
 						<Typography
+							dangerouslySetInnerHTML={{ __html: item.roleSummary }}
 							variant='body2'
-							children={ item.roleSummary }
+							// children={ item.roleSummary }
 						/>
 						<hr
 							style={{

@@ -27,7 +27,9 @@ const CompanyItem = ({ activeIdx, idx, item, onClick, onNav }) => {
 		>
 			<Fade in={ activeIdx === idx }>
 				<Box
-					onClick={ e => onClick(item, tileRef.current) }
+					tabIndex={ 0 }
+					onKeyDown={ e => e.key === 'Enter' && onClick(item, tileRef.current) }
+					onClick={ () => onClick(item, tileRef.current) }
 					sx={{
 						width: '100%',
 						height: ['calc(100vh - 280px)', 'calc(100vh - 164px)'],
@@ -72,7 +74,6 @@ const CompanyItem = ({ activeIdx, idx, item, onClick, onNav }) => {
 						variant='h2'
 						align='center'
 						fontWeight={ 600 }
-						paragraph
 						sx={{ color: isFilled ? '#fff' : item.bgColor }}
 						children={ item.displayName }
 					/>

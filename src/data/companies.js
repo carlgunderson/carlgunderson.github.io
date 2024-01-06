@@ -5,12 +5,12 @@ const companies = [
 		industries: ['Life Sciences', 'Nonprofit'],
 		platforms: ['Web'],
 		link: 'https://www.lunadna.com',
-		description: 'SaaS platform for Members, Community Admins, Survey Builders, and Researchers.',
+		description: 'Web applications for Members, Community Admins, Survey Builders, and Researchers.',
 		logoUrl: 'https://media.licdn.com/dms/image/C560BAQEl7H4rZCl5rQ/company-logo_100_100/0/1630513659824/lunapbc_logo?e=1712188800&v=beta&t=zlTyGLGU2gllpbffta96TQvqasBc6GHhc5J3d7UVQb4',
 		bgUrl: '../images/luna-my-data.png',
 		bgColor: '#009899',
 		role: 'Lead Front-end Engineer',
-		roleSummary: 'As the founding Lead Front-end Engineer I created a web-based SaaS platform for Luna Members, Community Admins, Survey Builders, and Researchers. I hired and led the front-end development team and worked closely with the back-end team to create a scalable, secure, and performant platform.',
+		roleSummary: "As the founding Lead Front-end Engineer I helped build a connected suite of web apps that comprise Luna's product offering.<br /><br />We were a small but mighty team of ten that managed to churn out an impressive amount of value through hard work, collaboration and creativity.<br /><br />I hired and led the front-end development team and worked closely with our talented backend and devops teams to create a scalable, secure, and performant platform that served hundreds of thousands of users.",
 		timeline: '2019 — Present',
 		projects: [
 			{
@@ -87,7 +87,7 @@ const companies = [
 		bgUrl: '../images/card-skinnyfit-full.jpg',
 		bgColor: '#000',
 		role: 'Senior Web Developer',
-		roleSummary: "As the lead Senior Web Developer at Smashtech, I was responsible for improving all KPIs of the Direct Response Marketing funnel and ecommerce site for SkinnyFit, a women's health and wellness brand. I worked closely with the design and marketing teams to create and optimize landing pages, checkout flows, and upsell flows. I also worked closely with the founders to convert the existing Angular application into a new React application that could support multiple brands.",
+		roleSummary: "As the lead Senior Web Developer at Smashtech, I was responsible for improving all KPIs of the Direct Response Marketing funnel and ecommerce site for SkinnyFit, a women's health and wellness brand. I worked closely with the design and marketing teams to create and optimize landing pages, checkout flows, and upsell flows.<br /><br />I also worked closely with the founders to convert the existing Angular application into a new React application that could support multiple brands.",
 		timeline: '2018 — 2019',
 		projects: [
 			{
@@ -120,7 +120,7 @@ const companies = [
 		bgUrl: '../images/card-govx-full.jpg',
 		bgColor: '#2a2d36',
 		role: 'Senior Web Developer',
-		roleSummary: 'As the only Front-end Developer at GovX, I built the first React application that enabled hundreds of thousands of military and first responders to register, get verified, then shop for exclusive discounts on products and services, with Shop and Ticketing sales that eventually grew to over $1M+ in daily revenue. I also built an embeddable, API-driven React application that allows GovX partners and organizations to allow SSO of military and first responders by verifying their identity and eligibility through GovX. ',
+		roleSummary: 'As the only Front-end Developer at GovX, I built the first React application that enabled hundreds of thousands of military and first responders to register, get verified, then shop for exclusive discounts on products and services, with Shop and Ticketing sales that eventually grew to over $1M+ in daily revenue.<br /><br />I also built an embeddable, API-driven React application that allows GovX partners and organizations to allow SSO of military and first responders by verifying their identity and eligibility through GovX. ',
 		timeline: '2015 — 2018',
 		projects: [
 			{
@@ -160,7 +160,7 @@ const companies = [
 		bgUrl: '../images/card-uverse-full.jpg',
 		bgColor: '#007dba',
 		role: 'Senior Web Developer',
-		roleSummary: 'At Piksel I was part of the U-verse web team, where we maintained and added new features to the U-verse web application for desktop and mobile. I later joined the XBox team, where I led development of the U-verse application for XBox One and handled all XBox Marketplace app submissions.',
+		roleSummary: 'At Piksel I was part of the U-verse web team, where we maintained and added new features to the U-verse web application for desktop and mobile.<br /><br />I later joined the XBox team, where I led development of the U-verse application for XBox One and handled all XBox Marketplace app submissions.',
 		timeline: '2014 — 2015',
 		projects: [
 			{
@@ -193,7 +193,7 @@ const companies = [
 		bgUrl: '../images/card-hp-full.jpg',
 		bgColor: '#60489d',
 		role: 'Front-end Web Developer',
-		roleSummary: 'As a Front-end Web Developer at HealthPartners, I was responsible for building and maintaining the HealthPartners.com marketing website and the HealthPartners Find Care, Insurance, Pharmacy, and Living Well web applications. I helped create a custom Bootstrap theme that was inherited by all HealthPartners web properties.',
+		roleSummary: 'As a Front-end Web Developer at HealthPartners, I was responsible for building and maintaining the HealthPartners.com marketing website and the HealthPartners Find Care, Insurance, Pharmacy, and Living Well web applications.<br /><br />I helped create a custom Bootstrap theme that was inherited by all HealthPartners web properties.',
 		timeline: '2013 — 2014',
 		projects: [
 			{
@@ -241,7 +241,7 @@ const companies = [
 		bgUrl: '../images/card-digi-full.jpg',
 		bgColor: '#91d46c',
 		role: 'Web Developer / Web Designer',
-		roleSummary: 'I started out at Digi as an entry level Web Designer, responsible for designing and developing the Digi.com marketing and ecommerce websites. I quickly moved into a Web Application Developer role, where I worked on custom application development projects for remote tracking of networks of IoT connected devices.',
+		roleSummary: 'I started out at Digi as an entry level Web Designer, responsible for designing and developing the Digi.com marketing and ecommerce websites.<br /><br />I quickly moved into a Web Application Developer role, where I worked on custom application development projects for remote tracking of networks of IoT connected devices.',
 		timeline: '2010 — 2013',
 		projects: [
 			{
