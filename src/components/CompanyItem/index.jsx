@@ -55,9 +55,9 @@ const CompanyItem = ({ activeIdx, idx, item, onClick, onNav }) => {
 							ref={ tileRef }
 							className='tile'
 							sx={{
-								height: '0px',
-								maxWidth: '100%',
-								pt: '100%',
+								width: '48px',
+								height: '48px',
+								m: '0 auto',
 								backgroundImage: `url(${item.logoUrl})`,
 								'&:after': {
 									content: '""',

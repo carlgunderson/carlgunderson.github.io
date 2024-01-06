@@ -171,7 +171,6 @@ const SelectedItem = ({ item, onClear, onMount }) => {
 										size='large'
 										sx={{
 											borderColor: item.bgColor,
-											borderWidth: '3px',
 											'& svg': {
 												fill: item.bgColor,
 											},

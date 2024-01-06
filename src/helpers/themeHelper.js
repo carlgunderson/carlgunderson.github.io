@@ -38,9 +38,9 @@ const theme = createTheme({
 			styleOverrides: {
 				root: {
 					fontWeight: 600,
-					borderWidth: '2px',
+					borderWidth: '3px',
 					'&:hover': {
-						borderWidth: '2px',
+						borderWidth: '3px',
 					},
 				},
 			},
@@ -55,9 +55,9 @@ const theme = createTheme({
 					border: '2px solid transparent',
 					boxShadow: 'none',
 					fontWeight: 600,
-					borderWidth: '2px',
+					borderWidth: '3px',
 					'&:hover': {
-						borderWidth: '2px',
+						borderWidth: '3px',
 					},
 				},
 			},
