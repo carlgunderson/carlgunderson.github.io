@@ -43,7 +43,7 @@ const SelectedItem = ({ item, onClear, onMount }) => {
 				sx={{
 					position: 'fixed',
 					width: '100vw',
-					height: ['calc(100vh - 270px)', 'calc(100vh - 164px)'],
+					height: ['calc(100vh - 276px)', 'calc(100vh - 164px)'],
 					display: 'flex',
 					flexDirection: 'column',
 					alignItems: 'center',

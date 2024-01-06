@@ -49,7 +49,7 @@ const Section = () => {
 			sx={{
 				position: 'relative',
 				width: '100vw',
-				minHeight: ['calc(100vh - 270px)', 'calc(100vh - 164px)'],
+				minHeight: ['calc(100vh - 276px)', 'calc(100vh - 164px)'],
 				display: 'flex',
 				flexDirection: 'column',
 				justifyContent: 'space-around',

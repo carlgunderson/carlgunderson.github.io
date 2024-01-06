@@ -38,7 +38,7 @@ const CompanyItem = ({ activeIdx, idx, item, onClick, onNav }) => {
 				<Box
 					sx={{
 						width: '100%',
-						height: ['calc(100vh - 280px)', 'calc(100vh - 164px)'],
+						height: ['calc(100vh - 276px)', 'calc(100vh - 164px)'],
 						position: 'absolute',
 						top: 0,
 						right: 0,
