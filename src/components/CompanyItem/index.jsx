@@ -69,7 +69,7 @@ const CompanyItem = ({ activeIdx, idx, item, onClick, onNav }) => {
 							flexDirection: 'column',
 							alignItems: 'center',
 							justifyContent: 'center',
-							p: '100px',
+							p: ['60px', '100px'],
 							cursor: 'pointer',
 						}}
 					>
