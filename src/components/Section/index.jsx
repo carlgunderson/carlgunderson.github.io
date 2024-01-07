@@ -63,7 +63,7 @@ const Section = () => {
 			// Down
 			if (activeIdx < jobs.length - 1) {
 				activeIdxRef.current = activeIdxRef.current + 1
-				setActiveIdx(prevIdx => prevIdx + 1)
+				setActiveIdx(activeIdxRef.current)
 			}
 		}
 
@@ -71,7 +71,7 @@ const Section = () => {
 			// Up
 			if (activeIdx > 0) {
 				activeIdxRef.current = activeIdxRef.current - 1
-				setActiveIdx(prevIdx => prevIdx - 1)
+				setActiveIdx(activeIdxRef.current)
 			}
 		}
 	}
