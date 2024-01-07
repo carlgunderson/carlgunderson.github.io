@@ -7,6 +7,7 @@ import JobItem from '../JobItem'
 import SelectedItem from '../SelectedItem'
 
 const Section = () => {
+	const activeIdxRef = useRef(0)
 	const positionRef = useRef()
 	const scrollElRef = useRef()
 
@@ -19,59 +20,36 @@ const Section = () => {
 	useEffect(() => {
 		let isScrolling, start, end, distance
 		const onWheel = event => {
-			console.log('SCROLLING', event)
-			// Set starting position
-			if (!start) {
-				start = scrollElRef.current.scrollY
-			}
-	
-			// Clear our timeout throughout the scroll
+			const delta = event.deltaY
 			window.clearTimeout(isScrolling)
-	
-			// Set a timeout to run after scrolling ends
+
 			isScrolling = setTimeout(() => {
-	
-				// Calculate distance
-				end = scrollElRef.current.scrollY
-				distance = end - start
-	
-				// Run the callback
-				handleScroll(distance, start, end)
-	
-				// Reset calculations
-				start = null
-				end = null
-				distance = null
-			}, 66)
+				handleScroll(delta)
+			}, 20)
 		}
-	
-		window.addEventListener('wheel', onWheel, false)
+		scrollElRef.current.addEventListener('wheel', onWheel, false)
 
 		return () => {
-			window.removeEventListener('wheel', onWheel)
+			scrollElRef.current.removeEventListener('wheel', onWheel)
 		}
 	}, [])
 
-	const handleScroll = (distance, start, end) => {
-		
-		distance = parseInt(Math.abs(distance), 10)
-		console.log(distance, start, end)
-		if (distance > 150) {
+	const handleScroll = delta => {
+		if (delta > 10) {
 			// Down
-			if (activeIdx < jobs.length - 1)
+			if (activeIdxRef.current < jobs.length - 1) {
+				activeIdxRef.current = activeIdxRef.current + 1
 				setActiveIdx(prevIdx => prevIdx + 1)
+			}
 		}
-		if (distance < -150) {
+		if (delta < -10) {
 			// Up
-			if (activeIdx > 0)
+			if (activeIdxRef.current > 0) {
+				activeIdxRef.current = activeIdxRef.current - 1
 				setActiveIdx(prevIdx => prevIdx - 1)
+			}
 		}
 	}
-
-	// const handleScroll = event => {
-
-  //   setScrollTop(event.currentTarget.scrollTop)
-  // }
 
 	const handleTouchStart = e => {
 		setTouchStart(e.targetTouches[0].clientY)
@@ -82,21 +60,28 @@ const Section = () => {
 	}
 
 	const handleTouchEnd = () => {
-		if (touchStart - touchEnd > 150) {
+		if (touchStart - touchEnd > 125) {
 			// Down
-			if (activeIdx < jobs.length - 1)
+			if (activeIdx < jobs.length - 1) {
+				activeIdxRef.current = activeIdxRef.current + 1
 				setActiveIdx(prevIdx => prevIdx + 1)
+			}
 		}
 
-		if (touchStart - touchEnd < -150) {
+		if (touchStart - touchEnd < -125) {
 			// Up
-			if (activeIdx > 0)
+			if (activeIdx > 0) {
+				activeIdxRef.current = activeIdxRef.current - 1
 				setActiveIdx(prevIdx => prevIdx - 1)
+			}
 		}
 	}
 
 	const handleNavigate = direction => {
 		setActiveIdx(prevIdx => direction === 'next' ? prevIdx + 1 : prevIdx - 1)
+		activeIdxRef.current = direction === 'next'
+			? activeIdxRef.current + 1
+			: activeIdxRef.current - 1
 	}
 
 	const handleSelectBox = (item, el) => {
@@ -167,7 +152,7 @@ const Section = () => {
 						<JobItem
 							key={ item.slug }
 							item={ item }
-							activeIdx={ activeIdx }
+							activeIdx={ activeIdxRef.current || activeIdx }
 							idx={ idx }
 							onClick={ handleSelectBox }
 							onNav={ handleNavigate }
