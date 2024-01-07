@@ -123,7 +123,7 @@ const Section = () => {
 				// justifyContent: 'space-around',
 				position: 'relative',
 				width: '100vw',
-				minHeight: ['calc(100vh - 276px)', 'calc(100vh - 164px)'],
+				minHeight: ['calc(100svh - 276px)', 'calc(100svh - 164px)'],
 				// overflow: selectedItem ? 'hidden' : 'auto',
 				overflow: 'hidden',
 			}}

@@ -29,7 +29,7 @@ const JobItem = ({ idx, isActive, item, onClick, onNav }) => {
 			<Box
 				sx={{
 					width: '100%',
-					height: ['calc(100vh - 276px)', 'calc(100vh - 164px)'],
+					height: ['calc(100svh - 276px)', 'calc(100svh - 164px)'],
 					position: 'absolute',
 					top: 0,
 					right: 0,
