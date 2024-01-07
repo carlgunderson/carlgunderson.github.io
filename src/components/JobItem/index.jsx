@@ -6,9 +6,9 @@ import {
 	KeyboardArrowUpOutlined as UpIcon,
 } from '@mui/icons-material'
 
-import companies from '../../data/companies'
+import jobs from '../../data/jobs'
 
-const CompanyItem = ({ activeIdx, idx, item, onClick, onNav }) => {
+const JobItem = ({ activeIdx, idx, item, onClick, onNav }) => {
 	const tileRef = useRef()
 
 	const isFilled = !!['luna', 'smashtech'].includes(item.slug)
@@ -16,10 +16,12 @@ const CompanyItem = ({ activeIdx, idx, item, onClick, onNav }) => {
 	const handleNav = (e, direction) => {
 		e.stopPropagation()
 		onNav(direction)
+		plausible('navigate', { props: { direction } })
 	}
 
 	const handleClick = e => {
 		onClick(item, tileRef.current)
+		plausible('select-job', { props: { direction } })
 	}
 
 	return (
@@ -115,7 +117,7 @@ const CompanyItem = ({ activeIdx, idx, item, onClick, onNav }) => {
 					</Box>
 					<Arrow
 						direction='next'
-						isDisabled={ idx === companies.length - 1 }
+						isDisabled={ idx === jobs.length - 1 }
 						isFilled={ isFilled }
 						item={ item }
 						onClick={ handleNav }
@@ -189,4 +191,4 @@ const Arrow = ({ direction, isDisabled, isFilled, item, onClick }) => {
 	)
 }
 
-export default CompanyItem
+export default JobItem

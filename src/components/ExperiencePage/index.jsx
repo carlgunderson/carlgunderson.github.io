@@ -3,17 +3,17 @@ import { useParams } from 'react-router-dom'
 import { Box, Button, Typography } from '@mui/material'
 import { HomeRounded } from '@mui/icons-material'
 
-import companies from '../../data/companies'
+import jobs from '../../data/jobs'
 
 const ExperiencePage = () => {
 	const match = useParams()
 
-	const company = companies.find(company => company.slug === match.company)
+	const job = jobs.find(job => job.slug === match.job)
 
 	return (
 		<Box sx={{ maxWidth: '700px', p: '24px', m: '0 auto' }}>
-			<Typography variant='h3' gutterBottom>{ match.company }</Typography>
-			<Typography>{ company.projects?.length || 0 } projects</Typography>
+			<Typography variant='h3' gutterBottom>{ match.job }</Typography>
+			<Typography>{ job.projects?.length || 0 } projects</Typography>
 			<Button
 				href='/'
 				variant='text'
@@ -22,7 +22,7 @@ const ExperiencePage = () => {
 				children='Overview'
 			/>
 			{
-				company.projects?.map(p => (
+				job.projects?.map(p => (
 					<Box key={ p.slug }>
 						<Typography variant='h5'>{ p.displayName }</Typography>
 						<Typography>{ p.description }</Typography>

@@ -20,7 +20,7 @@ const App = () => (
 		<GlobalStyles />
 		<Header />
 		{/* <Routes>
-			<Route path='/:company' element={ <ExperiencePage /> } />
+			<Route path='/:job' element={ <ExperiencePage /> } />
 			<Route path='/' element={ <HomePage /> } />
 		</Routes> */}
 		<Section />

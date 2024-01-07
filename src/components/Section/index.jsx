@@ -2,8 +2,8 @@ import React, { useRef, useState } from 'react'
 
 import { Box } from '@mui/material'
 
-import companies from '../../data/companies'
-import CompanyItem from '../CompanyItem'
+import jobs from '../../data/jobs'
+import JobItem from '../JobItem'
 import SelectedItem from '../SelectedItem'
 
 const Section = () => {
@@ -57,8 +57,8 @@ const Section = () => {
 			}}
 		>
 			{
-				!selectedItem && companies.map((item, idx) => (
-					<CompanyItem
+				!selectedItem && jobs.map((item, idx) => (
+					<JobItem
 						key={ item.slug }
 						item={ item }
 						activeIdx={ activeIdx }

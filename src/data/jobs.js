@@ -1,4 +1,4 @@
-const companies = [
+const jobs = [
 	{
 		slug: 'luna',
 		displayName: 'Luna',
@@ -272,4 +272,4 @@ const companies = [
 	},
 ]
 
-export default companies
+export default jobs

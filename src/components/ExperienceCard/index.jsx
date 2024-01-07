@@ -9,7 +9,7 @@ import {
 } from '@mui/material'
 import { OpenInNewRounded as OpenInNewIcon } from '@mui/icons-material'
 
-const ExperienceCard = ({ company }) => (
+const ExperienceCard = ({ job }) => (
 	<Card
 		sx={{
 			width: '400px',
@@ -33,9 +33,9 @@ const ExperienceCard = ({ company }) => (
 			},
 		}}
 	>
-		<Link href={ company.slug }>
+		<Link href={ job.slug }>
 			<CardMedia
-				image={ company.logoUrl }
+				image={ job.logoUrl }
 				sx={{
 					position: 'relative',
 					height: '270px',
@@ -81,10 +81,10 @@ const ExperienceCard = ({ company }) => (
 					variant='h5'
 					component='h3'
 					sx={{ color: '#333', fontWeight: 300 }}
-					children={ company.displayName }
+					children={ job.displayName }
 				/>
 				<Typography sx={{ color: '#333', fontFamily: 'Roboto' }}>
-					<strong>{ company.description }</strong>
+					<strong>{ job.description }</strong>
 				</Typography>
 				<Box
 					sx={{

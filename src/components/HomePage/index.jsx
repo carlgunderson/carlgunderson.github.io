@@ -7,15 +7,15 @@ import {
 	Typography,
 } from '@mui/material'
 
-import companies from '../../data/companies'
+import jobs from '../../data/jobs'
 import ExperienceCard from '../ExperienceCard'
 
 const HomePage = () => (
 	<div>
 		{
-			companies.map(c => (
-				<div key={ c.slug } style={{ marginTop: '60px' }}>
-					<ExperienceCard company={ c } />
+			jobs.map(j => (
+				<div key={ j.slug } style={{ marginTop: '60px' }}>
+					<ExperienceCard job={ j } />
 				</div>
 			))
 		}
