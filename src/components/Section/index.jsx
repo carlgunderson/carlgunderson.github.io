@@ -58,19 +58,19 @@ const Section = () => {
 	const handleTouchEnd = () => {
 		if (touchStart - touchEnd > 100) {
 			// Down
-			if (activeIdx < jobs.length - 1) {
+			if (activeIdxRef.current < jobs.length - 1) {
 				activeIdxRef.current = activeIdxRef.current + 1
-				// setActiveIdx(activeIdxRef.current)
-				setActiveIdx(prevIdx => prevIdx + 1)
+				setActiveIdx(activeIdxRef.current)
+				// setActiveIdx(prevIdx => prevIdx + 1)
 			}
 		}
 
 		if (touchStart - touchEnd < -100) {
 			// Up
-			if (activeIdx > 0) {
+			if (activeIdxRef.current > 0) {
 				activeIdxRef.current = activeIdxRef.current - 1
-				// setActiveIdx(activeIdxRef.current)
-				setActiveIdx(prevIdx => prevIdx - 1)
+				setActiveIdx(activeIdxRef.current)
+				// setActiveIdx(prevIdx => prevIdx - 1)
 			}
 		}
 	}

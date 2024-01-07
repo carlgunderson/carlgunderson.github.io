@@ -141,12 +141,11 @@ const Arrow = ({ direction, isDisabled, isFilled, item, onClick }) => {
 				sx={{
 					position: 'absolute',
 					top: direction === 'prev'
-						? [isIosSafari ? '40px' : '20px', '40px']
+						? ['20px', '40px']
 						: 'auto',
 					bottom: direction === 'next'
-						? [isIosSafari ? '40px' : '20px', '40px']
+						? ['20px', '40px']
 						: 'auto',
-					pb: isIosSafari ? '12px' : '0',
 				}}
 			>
 				<Fab
