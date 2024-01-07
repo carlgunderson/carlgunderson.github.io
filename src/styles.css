@@ -6,15 +6,12 @@
 
 body,
 html {
+	position: fixed;
 	height: 100%;
 	min-width: 100%;
 	min-height: 100%;
 	margin: 0;
 	padding: 0;
-}
-
-body {
-	position: fixed;
 }
 
 .container-header * {
