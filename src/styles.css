@@ -14,7 +14,7 @@ html {
 }
 
 body {
-	/* position: fixed; */
+	position: fixed;
 }
 
 .container-header * {
