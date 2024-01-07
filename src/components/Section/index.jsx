@@ -13,12 +13,11 @@ const Section = () => {
 
 	const [activeIdx, setActiveIdx] = useState(0)
 	const [selectedItem, setSelectedItem] = useState()
-	const [scrollTop, setScrollTop] = useState(0)
 	const [touchStart, setTouchStart] = useState(0)
 	const [touchEnd, setTouchEnd] = useState(0)
 
 	useEffect(() => {
-		let isScrolling, start, end, distance
+		let isScrolling
 		const onWheel = event => {
 			const delta = event.deltaY
 			window.clearTimeout(isScrolling)
@@ -35,14 +34,14 @@ const Section = () => {
 	}, [])
 
 	const handleScroll = delta => {
-		if (delta > 10) {
+		if (delta > 8) {
 			// Down
 			if (activeIdxRef.current < jobs.length - 1) {
 				activeIdxRef.current = activeIdxRef.current + 1
 				setActiveIdx(prevIdx => prevIdx + 1)
 			}
 		}
-		if (delta < -10) {
+		if (delta < -8) {
 			// Up
 			if (activeIdxRef.current > 0) {
 				activeIdxRef.current = activeIdxRef.current - 1
@@ -60,7 +59,7 @@ const Section = () => {
 	}
 
 	const handleTouchEnd = () => {
-		if (touchStart - touchEnd > 125) {
+		if (touchStart - touchEnd > 100) {
 			// Down
 			if (activeIdx < jobs.length - 1) {
 				activeIdxRef.current = activeIdxRef.current + 1
@@ -68,7 +67,7 @@ const Section = () => {
 			}
 		}
 
-		if (touchStart - touchEnd < -125) {
+		if (touchStart - touchEnd < -100) {
 			// Up
 			if (activeIdx > 0) {
 				activeIdxRef.current = activeIdxRef.current - 1
@@ -78,10 +77,10 @@ const Section = () => {
 	}
 
 	const handleNavigate = direction => {
-		setActiveIdx(prevIdx => direction === 'next' ? prevIdx + 1 : prevIdx - 1)
-		activeIdxRef.current = direction === 'next'
+		direction === 'next'
 			? activeIdxRef.current + 1
 			: activeIdxRef.current - 1
+		setActiveIdx(prevIdx => direction === 'next' ? prevIdx + 1 : prevIdx - 1)
 	}
 
 	const handleSelectBox = (item, el) => {
