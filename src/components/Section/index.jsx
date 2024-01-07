@@ -77,7 +77,7 @@ const Section = () => {
 	}
 
 	const handleNavigate = direction => {
-		direction === 'next'
+		activeIdxRef.current = direction === 'next'
 			? activeIdxRef.current + 1
 			: activeIdxRef.current - 1
 		setActiveIdx(prevIdx => direction === 'next' ? prevIdx + 1 : prevIdx - 1)
