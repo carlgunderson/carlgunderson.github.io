@@ -24,7 +24,7 @@ const Section = () => {
 
 			isScrolling = setTimeout(() => {
 				handleScroll(delta)
-			}, 20)
+			}, 17)
 		}
 		scrollElRef.current.addEventListener('wheel', onWheel, false)
 
@@ -34,14 +34,14 @@ const Section = () => {
 	}, [])
 
 	const handleScroll = delta => {
-		if (delta > 8) {
+		if (delta > 7) {
 			// Down
 			if (activeIdxRef.current < jobs.length - 1) {
 				activeIdxRef.current = activeIdxRef.current + 1
 				setActiveIdx(prevIdx => prevIdx + 1)
 			}
 		}
-		if (delta < -8) {
+		if (delta < -7) {
 			// Up
 			if (activeIdxRef.current > 0) {
 				activeIdxRef.current = activeIdxRef.current - 1
