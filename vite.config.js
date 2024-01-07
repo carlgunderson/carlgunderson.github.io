@@ -14,13 +14,13 @@ const certPath = path.join(documentsPath, 'localhost.pem')
 export default defineConfig(({ command, mode }) => {
 	const env = loadEnv(mode, process.cwd(), '')
 
-	const key = env.NODE_ENV === 'development'
-		? fs.readFileSync(keyPath)
-		: fs.readFileSync('private-key.pem')
+	const key = env.NODE_ENV === 'github'
+		? fs.readFileSync('private-key.pem')
+		: fs.readFileSync(keyPath)
 
-	const cert = env.NODE_ENV === 'development'
-		? fs.readFileSync(certPath)
-		: fs.readFileSync('private-cert.pem')
+	const cert = env.NODE_ENV === 'github'
+		? fs.readFileSync('private-cert.pem')
+		: fs.readFileSync(certPath)
 
 	let server = {
 		// origin: process.env.API_URL,

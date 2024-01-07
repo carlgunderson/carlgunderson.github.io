@@ -50,10 +50,6 @@ body {
 	background-position: center top;
 	overflow: hidden;
 	cursor: pointer;
-
-	img {
-		width: 100%;
-	}
 }
 
 .box {
