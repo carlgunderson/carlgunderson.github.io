@@ -27,7 +27,7 @@ export default defineConfig(({ command, mode }) => {
 		// host: process.env.API_URL,
 		host: 'localhost',
 		port: 8080,
-		open: true,
+		// open: true,
 		strictPort: true,
 		https: {
 			key,

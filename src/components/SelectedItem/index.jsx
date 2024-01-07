@@ -34,7 +34,7 @@ const SelectedItem = ({ item, onClear, onMount }) => {
 					top: '100%',
 					bgcolor: item.bgColor,
 					'&.show': {
-						top: ['218px', '112px'],
+						top: ['222px', '112px'],
 					},
 				}}
 			/>
