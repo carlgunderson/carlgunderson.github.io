@@ -118,21 +118,20 @@ const Section = () => {
 			onTouchMove={ handleTouchMove }
 			onTouchEnd={ handleTouchEnd }
 			sx={{
-				display: 'flex',
-				flexDirection: 'column',
-				justifyContent: 'space-around',
+				// display: 'flex',
+				// flexDirection: 'column',
+				// justifyContent: 'space-around',
 				position: 'relative',
 				width: '100vw',
 				minHeight: ['calc(100vh - 276px)', 'calc(100vh - 164px)'],
 				overflow: selectedItem ? 'hidden' : 'auto',
 			}}
 		>
-			{/* <Box
-				ref={ scrollElRef }
+			<Box
+				// ref={ scrollElRef }
 				// onScroll={ handleScroll }
-				
 				sx={{
-					position: 'relative',
+					position: 'absolute',
 					height: '100%',
 					width: '100%',
 					top: 0,
@@ -142,8 +141,9 @@ const Section = () => {
 					display: 'flex',
 					flexDirection: 'column',
 					justifyContent: 'space-around',
+					overflow: 'hidden',
 				}}
-			> */}
+			>
 				{
 					!selectedItem && jobs.map((item, idx) => (
 						<JobItem
@@ -156,7 +156,7 @@ const Section = () => {
 						/>
 					))
 				}
-			{/* </Box> */}
+			</Box>
 			{
 				selectedItem &&
 				<SelectedItem
