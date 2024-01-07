@@ -8,7 +8,7 @@ import {
 
 import jobs from '../../data/jobs'
 
-const JobItem = ({ activeIdx, idx, item, onClick, onNav }) => {
+const JobItem = ({ idx, isActive, item, onClick, onNav }) => {
 	const tileRef = useRef()
 
 	const isFilled = !!['luna', 'smashtech'].includes(item.slug)
@@ -36,7 +36,7 @@ const JobItem = ({ activeIdx, idx, item, onClick, onNav }) => {
 				mb: '60px',
 			}}
 		>
-			<Fade in={ activeIdx === idx }>
+			<Fade in={ isActive }>
 				<Box
 					sx={{
 						width: '100%',

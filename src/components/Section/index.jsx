@@ -56,26 +56,27 @@ const Section = () => {
 	}
 
 	const handleTouchEnd = () => {
+		if (touchEnd < 10 || touchStart < 10 || !!selectedItem)
+			return
 		if (touchStart - touchEnd > 100) {
 			// Down
 			if (activeIdxRef.current < jobs.length - 1) {
 				activeIdxRef.current = activeIdxRef.current + 1
 				setActiveIdx(activeIdxRef.current)
-				// setActiveIdx(prevIdx => prevIdx + 1)
 			}
-		}
-
-		if (touchStart - touchEnd < -100) {
+		} else if (touchStart - touchEnd < -100) {
 			// Up
 			if (activeIdxRef.current > 0) {
 				activeIdxRef.current = activeIdxRef.current - 1
 				setActiveIdx(activeIdxRef.current)
-				// setActiveIdx(prevIdx => prevIdx - 1)
 			}
 		}
+		setTouchStart(0)
+		setTouchEnd(0)
 	}
 
 	const handleNavigate = direction => {
+		console.log('nav')
 		activeIdxRef.current = direction === 'next'
 			? activeIdxRef.current + 1
 			: activeIdxRef.current - 1
@@ -112,10 +113,10 @@ const Section = () => {
 
 	return (
 		<Box
-			ref={ scrollElRef }
-			onTouchStart={ handleTouchStart }
-			onTouchMove={ handleTouchMove }
-			onTouchEnd={ handleTouchEnd }
+			// ref={ scrollElRef }
+			// onTouchStart={ handleTouchStart }
+			// onTouchMove={ handleTouchMove }
+			// onTouchEnd={ handleTouchEnd }
 			sx={{
 				// display: 'flex',
 				// flexDirection: 'column',
@@ -127,7 +128,10 @@ const Section = () => {
 			}}
 		>
 			<Box
-				// ref={ scrollElRef }
+				onTouchStart={ handleTouchStart }
+				onTouchMove={ handleTouchMove }
+				onTouchEnd={ handleTouchEnd }
+				ref={ scrollElRef }
 				sx={{
 					position: 'absolute',
 					height: '100%',
@@ -147,7 +151,7 @@ const Section = () => {
 						<JobItem
 							key={ item.slug }
 							item={ item }
-							activeIdx={ activeIdxRef.current }
+							isActive={ activeIdxRef.current === idx }
 							idx={ idx }
 							onClick={ handleSelectBox }
 							onNav={ handleNavigate }
