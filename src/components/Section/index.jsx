@@ -24,7 +24,7 @@ const Section = () => {
 
 			isScrolling = setTimeout(() => {
 				handleScroll(delta)
-			}, 17)
+			}, 20)
 		}
 		scrollElRef.current.addEventListener('wheel', onWheel, false)
 
@@ -38,14 +38,14 @@ const Section = () => {
 			// Down
 			if (activeIdxRef.current < jobs.length - 1) {
 				activeIdxRef.current = activeIdxRef.current + 1
-				setActiveIdx(prevIdx => prevIdx + 1)
+				setActiveIdx(activeIdxRef.current)
 			}
 		}
 		if (delta < -7) {
 			// Up
 			if (activeIdxRef.current > 0) {
 				activeIdxRef.current = activeIdxRef.current - 1
-				setActiveIdx(prevIdx => prevIdx - 1)
+				setActiveIdx(activeIdxRef.current)
 			}
 		}
 	}
@@ -113,9 +113,7 @@ const Section = () => {
 
 	return (
 		<Box
-			id='desktop-scroll-target'
 			ref={ scrollElRef }
-			// onScroll={ handleScroll }
 			onTouchStart={ handleTouchStart }
 			onTouchMove={ handleTouchMove }
 			onTouchEnd={ handleTouchEnd }
@@ -151,7 +149,7 @@ const Section = () => {
 						<JobItem
 							key={ item.slug }
 							item={ item }
-							activeIdx={ activeIdxRef.current || activeIdx }
+							activeIdx={ activeIdx }
 							idx={ idx }
 							onClick={ handleSelectBox }
 							onNav={ handleNavigate }
