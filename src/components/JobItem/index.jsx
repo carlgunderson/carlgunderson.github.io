@@ -146,6 +146,7 @@ const Arrow = ({ direction, isDisabled, isFilled, item, onClick }) => {
 					bottom: direction === 'next'
 						? [isIosSafari ? '40px' : '20px', '40px']
 						: 'auto',
+					pb: isIosSafari ? '24px' : '0',
 				}}
 			>
 				<Fab
