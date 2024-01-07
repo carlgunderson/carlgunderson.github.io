@@ -124,7 +124,8 @@ const Section = () => {
 				position: 'relative',
 				width: '100vw',
 				minHeight: ['calc(100vh - 276px)', 'calc(100vh - 164px)'],
-				overflow: selectedItem ? 'hidden' : 'auto',
+				// overflow: selectedItem ? 'hidden' : 'auto',
+				overflow: 'hidden',
 			}}
 		>
 			<Box
