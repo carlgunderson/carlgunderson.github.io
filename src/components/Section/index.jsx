@@ -17,13 +17,27 @@ const Section = () => {
 	const [touchEnd, setTouchEnd] = useState(0)
 
 	useEffect(() => {
-		let isScrolling
+		let isWheeling
 		const onWheel = event => {
 			const delta = event.deltaY
-			window.clearTimeout(isScrolling)
+			window.clearTimeout(isWheeling)
 
-			isScrolling = setTimeout(() => {
-				handleScroll(delta)
+			isWheeling = setTimeout(() => {
+				if (delta > 7) {
+					// Down
+					if (activeIdxRef.current < jobs.length - 1) {
+						activeIdxRef.current = activeIdxRef.current + 1
+						setActiveIdx(activeIdxRef.current)
+						// setActiveIdx(prevIdx => prevIdx + 1)
+					}
+				} else if (delta < -7) {
+					// Up
+					if (activeIdxRef.current > 0) {
+						activeIdxRef.current = activeIdxRef.current - 1
+						setActiveIdx(activeIdxRef.current)
+						// setActiveIdx(prevIdx => prevIdx - 1)
+					}
+				}
 			}, 20)
 		}
 		scrollElRef.current.addEventListener('wheel', onWheel, false)
@@ -32,23 +46,6 @@ const Section = () => {
 			scrollElRef.current.removeEventListener('wheel', onWheel)
 		}
 	}, [])
-
-	const handleScroll = delta => {
-		if (delta > 7) {
-			// Down
-			if (activeIdxRef.current < jobs.length - 1) {
-				activeIdxRef.current = activeIdxRef.current + 1
-				setActiveIdx(activeIdxRef.current)
-			}
-		}
-		if (delta < -7) {
-			// Up
-			if (activeIdxRef.current > 0) {
-				activeIdxRef.current = activeIdxRef.current - 1
-				setActiveIdx(activeIdxRef.current)
-			}
-		}
-	}
 
 	const handleTouchStart = e => {
 		setTouchStart(e.targetTouches[0].clientY)
@@ -63,7 +60,8 @@ const Section = () => {
 			// Down
 			if (activeIdx < jobs.length - 1) {
 				activeIdxRef.current = activeIdxRef.current + 1
-				setActiveIdx(activeIdxRef.current)
+				// setActiveIdx(activeIdxRef.current)
+				setActiveIdx(prevIdx => prevIdx + 1)
 			}
 		}
 
@@ -71,7 +69,8 @@ const Section = () => {
 			// Up
 			if (activeIdx > 0) {
 				activeIdxRef.current = activeIdxRef.current - 1
-				setActiveIdx(activeIdxRef.current)
+				// setActiveIdx(activeIdxRef.current)
+				setActiveIdx(prevIdx => prevIdx - 1)
 			}
 		}
 	}
@@ -129,7 +128,6 @@ const Section = () => {
 		>
 			<Box
 				// ref={ scrollElRef }
-				// onScroll={ handleScroll }
 				sx={{
 					position: 'absolute',
 					height: '100%',
@@ -149,7 +147,7 @@ const Section = () => {
 						<JobItem
 							key={ item.slug }
 							item={ item }
-							activeIdx={ activeIdx }
+							activeIdx={ activeIdxRef.current }
 							idx={ idx }
 							onClick={ handleSelectBox }
 							onNav={ handleNavigate }
