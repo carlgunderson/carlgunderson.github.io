@@ -21,7 +21,7 @@ const JobItem = ({ activeIdx, idx, item, onClick, onNav }) => {
 
 	const handleClick = e => {
 		onClick(item, tileRef.current)
-		plausible('select-job', { props: { direction } })
+		plausible('select-job', { props: { name: item.slug } })
 	}
 
 	return (
