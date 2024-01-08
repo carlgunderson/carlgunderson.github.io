@@ -125,7 +125,7 @@ const Section = () => {
 				width: '100vw',
 				minHeight: ['calc(100svh - 276px)', 'calc(100svh - 164px)'],
 				// overflow: selectedItem ? 'hidden' : 'auto',
-				overflow: 'hidden',
+				overflow: 'scroll',
 			}}
 		>
 			<Box
@@ -144,7 +144,7 @@ const Section = () => {
 					display: 'flex',
 					flexDirection: 'column',
 					justifyContent: 'space-around',
-					overflow: 'hidden',
+					overflow: 'scroll',
 				}}
 			>
 				{
