@@ -113,14 +113,14 @@ const Section = () => {
 
 	return (
 		<Box
-			// ref={ scrollElRef }
-			// onTouchStart={ handleTouchStart }
-			// onTouchMove={ handleTouchMove }
-			// onTouchEnd={ handleTouchEnd }
+			ref={ scrollElRef }
+			onTouchStart={ handleTouchStart }
+			onTouchMove={ handleTouchMove }
+			onTouchEnd={ handleTouchEnd }
 			sx={{
-				// display: 'flex',
-				// flexDirection: 'column',
-				// justifyContent: 'space-around',
+				display: 'flex',
+				flexDirection: 'column',
+				justifyContent: 'space-around',
 				position: 'relative',
 				width: '100vw',
 				minHeight: ['calc(100svh - 276px)', 'calc(100svh - 164px)'],
@@ -128,7 +128,7 @@ const Section = () => {
 				overflow: 'scroll',
 			}}
 		>
-			<Box
+			{/* <Box
 				onTouchStart={ handleTouchStart }
 				onTouchMove={ handleTouchMove }
 				onTouchEnd={ handleTouchEnd }
@@ -146,7 +146,7 @@ const Section = () => {
 					justifyContent: 'space-around',
 					overflow: 'scroll',
 				}}
-			>
+			> */}
 				{
 					!selectedItem && jobs.map((item, idx) => (
 						<JobItem
@@ -159,7 +159,7 @@ const Section = () => {
 						/>
 					))
 				}
-			</Box>
+			{/* </Box> */}
 			{
 				selectedItem &&
 				<SelectedItem
