@@ -15,8 +15,11 @@ const JobItem = ({ idx, isActive, item, onClick, onNav }) => {
 
 	const handleNav = (e, direction) => {
 		e.stopPropagation()
-		onNav(direction)
-		plausible('navigate', { props: { direction } })
+		// Prevent double clicks
+		if (!e.detail || e.detail === 1) {
+			onNav(direction)
+			plausible('navigate', { props: { direction } })
+		}
 	}
 
 	const handleClick = e => {
