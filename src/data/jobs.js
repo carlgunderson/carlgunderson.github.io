@@ -120,7 +120,7 @@ const jobs = [
 		bgUrl: '../images/card-govx-full.jpg',
 		bgColor: '#2a2d36',
 		role: 'Senior Web Developer',
-		roleSummary: 'As the only Front-end Developer at GovX, I built the first React application that enabled hundreds of thousands of military and first responders to register, get verified, then shop for exclusive discounts on products and services, with Shop and Ticketing sales that eventually grew to over $1M+ in daily revenue.<br /><br />I also built an embeddable, API-driven React application that allows GovX partners and organizations to allow SSO of military and first responders by verifying their identity and eligibility through GovX. ',
+		roleSummary: 'As the only front-end developer at GovX, I built the first React application that enabled hundreds of thousands of military and first responders to register, get verified, then shop for exclusive discounts on products and services, with Shop and Ticketing sales that eventually grew to over $1M+ in daily revenue.<br /><br />Later, as the lead front-end developer, I helped create GOVX ID by building an embeddable React application that allows ecommerce companies and brands to provide discounts to military and first responders by verifying their affiliation and eligibility via GovX APIs.',
 		timeline: '2015 — 2018',
 		projects: [
 			{
@@ -142,7 +142,7 @@ const jobs = [
 			{
 				slug: 'verification',
 				displayName: 'Verify with GovX',
-				link: 'https://govx.com/verify',
+				link: 'https://govxinc.com/verification-solutions/',
 				description: 'GovX Verify is a free, fast, and secure way for military members and first responders to verify eligibility for exclusive discounts.',
 				technologies: ['React', '.NET', 'AWS'],
 				imageUrl: '',

@@ -5,13 +5,10 @@ import {
 	CssBaseline,
 	Typography,
 } from '@mui/material'
-import { Route, Routes } from 'react-router-dom'
 
 import theme from '../../helpers/themeHelper'
-import ExperiencePage from '../ExperiencePage'
 import GlobalStyles from '../GlobalStyles'
 import Header from '../Header'
-import HomePage from '../HomePage'
 import Section from '../Section'
 
 const App = () => (
@@ -19,10 +16,6 @@ const App = () => (
 		<CssBaseline />
 		<GlobalStyles />
 		<Header />
-		{/* <Routes>
-			<Route path='/:job' element={ <ExperiencePage /> } />
-			<Route path='/' element={ <HomePage /> } />
-		</Routes> */}
 		<Section />
 		<Box
 			sx={{

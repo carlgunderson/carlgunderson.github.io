@@ -19,23 +19,23 @@ const Section = () => {
 	useEffect(() => {
 		let isWheeling
 		const onWheel = event => {
-			const delta = event.deltaY
 			window.clearTimeout(isWheeling)
 
 			isWheeling = setTimeout(() => {
+				if (selectedItem)
+					return
+				const delta = event.deltaY
 				if (delta > 7) {
 					// Down
 					if (activeIdxRef.current < jobs.length - 1) {
 						activeIdxRef.current = activeIdxRef.current + 1
 						setActiveIdx(activeIdxRef.current)
-						// setActiveIdx(prevIdx => prevIdx + 1)
 					}
 				} else if (delta < -7) {
 					// Up
 					if (activeIdxRef.current > 0) {
 						activeIdxRef.current = activeIdxRef.current - 1
 						setActiveIdx(activeIdxRef.current)
-						// setActiveIdx(prevIdx => prevIdx - 1)
 					}
 				}
 			}, 20)
@@ -45,7 +45,7 @@ const Section = () => {
 		return () => {
 			scrollElRef.current.removeEventListener('wheel', onWheel)
 		}
-	}, [])
+	}, [selectedItem])
 
 	const handleTouchStart = e => {
 		setTouchStart(e.targetTouches[0].clientY)
@@ -76,7 +76,6 @@ const Section = () => {
 	}
 
 	const handleNavigate = direction => {
-		console.log('nav')
 		activeIdxRef.current = direction === 'next'
 			? activeIdxRef.current + 1
 			: activeIdxRef.current - 1
@@ -124,42 +123,21 @@ const Section = () => {
 				position: 'relative',
 				width: '100vw',
 				minHeight: ['calc(100svh - 276px)', 'calc(100svh - 164px)'],
-				// overflow: selectedItem ? 'hidden' : 'auto',
 				overflow: 'scroll',
 			}}
 		>
-			{/* <Box
-				onTouchStart={ handleTouchStart }
-				onTouchMove={ handleTouchMove }
-				onTouchEnd={ handleTouchEnd }
-				ref={ scrollElRef }
-				sx={{
-					position: 'absolute',
-					height: '100%',
-					width: '100%',
-					top: 0,
-					right: 0,
-					bottom: '52px',
-					left: 0,
-					display: 'flex',
-					flexDirection: 'column',
-					justifyContent: 'space-around',
-					overflow: 'scroll',
-				}}
-			> */}
-				{
-					!selectedItem && jobs.map((item, idx) => (
-						<JobItem
-							key={ item.slug }
-							item={ item }
-							isActive={ activeIdxRef.current === idx }
-							idx={ idx }
-							onClick={ handleSelectBox }
-							onNav={ handleNavigate }
-						/>
-					))
-				}
-			{/* </Box> */}
+			{
+				!selectedItem && jobs.map((item, idx) => (
+					<JobItem
+						key={ item.slug }
+						item={ item }
+						isActive={ activeIdxRef.current === idx }
+						idx={ idx }
+						onClick={ handleSelectBox }
+						onNav={ handleNavigate }
+					/>
+				))
+			}
 			{
 				selectedItem &&
 				<SelectedItem
