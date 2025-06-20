@@ -21,23 +21,9 @@
 			href="https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@300;400;500;600;700&display=swap"
 		/>
 		<link rel="stylesheet" href="/src/styles.css" />
-		<script
-			defer
-			data-domain="carlgunderson.com"
-			src="https://plausible.io/js/script.tagged-events.outbound-links.js"
-		></script>
-		<script>
-			window.plausible = window.plausible
-				|| function() { (window.plausible.q = window.plausible.q || []).push(arguments) }
-		</script>
 	</head>
 	<body>
 		<div id="app-root"></div>
 		<script type="module" crossorigin src="/src/index.jsx"></script>
-		<script>
-			document.addEventListener('DOMContentLoaded', function () {
-				plausible('404', { props: { path: document.location.pathname } });
-			});
-		</script>
 	</body>
 </html>

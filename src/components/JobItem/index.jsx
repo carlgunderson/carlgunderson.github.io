@@ -1,4 +1,5 @@
 import React, { useRef } from 'react'
+import posthog from 'posthog-js'
 
 import { Box, Fab, Fade, Typography } from '@mui/material'
 import {
@@ -18,13 +19,13 @@ const JobItem = ({ idx, isActive, item, onClick, onNav }) => {
 		// Prevent double clicks
 		if (!e.detail || e.detail === 1) {
 			onNav(direction)
-			plausible('navigate', { props: { direction } })
+			posthog.capture('navigate', { direction })
 		}
 	}
 
 	const handleClick = e => {
 		onClick(item, tileRef.current)
-		plausible('select-job', { props: { name: item.slug } })
+		posthog.capture('select-job', { name: item.slug })
 	}
 
 	return (

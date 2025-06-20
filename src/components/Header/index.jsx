@@ -40,7 +40,7 @@ const Header = () => {
 					}}
 				>
 					<img
-						src='https://media.licdn.com/dms/image/D5603AQHR1eqU2cfv5Q/profile-displayphoto-shrink_400_400/0/1681427003891?e=1709769600&v=beta&t=0arSuxT64hQhDorrrsU-j8UKZf-yiphAqMySvZ-8tmY'
+						src='/images/carl.jpg'
 						height='80'
 						width='80'
 						style={{ borderRadius: '50%' }}
