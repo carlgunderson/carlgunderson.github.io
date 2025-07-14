@@ -1,8 +1,9 @@
 import path from 'path'
 import fs from 'fs'
 import os from 'os'
-import dotenv from 'dotenv'
+// import dotenv from 'dotenv'
 import { defineConfig, loadEnv } from 'vite'
+import { tanstackRouter } from '@tanstack/router-plugin/vite'
 import react from '@vitejs/plugin-react'
 
 const homeDirectory = os.homedir()
@@ -41,7 +42,20 @@ export default defineConfig(({ command, mode }) => {
 		preview: {
 			port: 8080,
 		},
+		// base: './',
+		// paths: {
+		// 	'~/*': ['src/*'],
+		// },
+		resolve: {
+			alias: {
+				'~/': `${path.resolve(__dirname, 'src')}/`,
+			},
+		},
 		plugins: [
+			tanstackRouter({
+				target: 'react',
+				autoCodeSplitting: true,
+			}),
 			react(),
 		],
 		publicDir: path.join(__dirname, 'public'),

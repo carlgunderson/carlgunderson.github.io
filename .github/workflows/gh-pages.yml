@@ -34,7 +34,6 @@ jobs:
         uses: actions/setup-node@v4
         with:
           node-version: 22
-          cache: 'npm'
       - name: Write key file
         run: | 
           echo $PRIVATE_KEY > private-key.pem
@@ -49,10 +48,12 @@ jobs:
         run: | 
           echo key: ${{ hashFiles('private-key.pem') }}
           echo cert: ${{ hashFiles('private-cert.pem') }}
+      - name: Install pnpm
+        run: npm install -g pnpm
       - name: Install dependencies
-        run: npm install
+        run: pnpm install
       - name: Build
-        run: NODE_ENV=github npm run build
+        run: NODE_ENV=github pnpm run build
         env:
           VITE_PUBLIC_POSTHOG_KEY: ${{ secrets.VITE_PUBLIC_POSTHOG_KEY }}
           VITE_PUBLIC_POSTHOG_HOST: ${{ secrets.VITE_PUBLIC_POSTHOG_HOST }}
