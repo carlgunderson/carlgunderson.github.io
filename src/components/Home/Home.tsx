@@ -13,7 +13,7 @@ const Home = () => {
 				// exit={{ opacity: 0, y: -40 }}
 				transition={{ type: 'spring', stiffness: 100, damping: 30, delay: 0.1 }}
 			>
-				<Text as='p' style={{ position: 'relative', fontSize: 20, color: '#333', marginBottom: 48, fontWeight: 500, maxWidth: '100%' }}>
+				<Text as='p' style={{ position: 'relative', fontSize: 20, marginBottom: 48, fontWeight: 500, maxWidth: '100%' }}>
 					👋 <strong>Hey there!</strong> I'm Carl — a product engineer who loves solving problems and building things. Preferably at the same time.
 				</Text>
 			</motion.div>

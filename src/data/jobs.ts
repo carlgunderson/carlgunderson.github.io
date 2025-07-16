@@ -1,16 +1,18 @@
-const jobs = [
+import { IJob } from '~/types'
+
+const jobs: IJob[] = [
 	{
 		slug: 'operator',
 		displayName: 'Operator.ai',
 		industries: ['AI', 'SaaS'],
 		platforms: ['Web'],
 		link: 'https://www.operator.ai',
-		description: 'AI SaaS platform for GTM teams.',
+		description: 'AI SaaS platform for GTM teams',
 		logoUrl: '../images/logos/logo-opr-blk.png',
 		bgUrl: '../images/card-operator-full.png',
 		bgColor: '#fff',
 		role: 'Founding Engineer',
-		roleSummary: "As a founding engineer at Operator, I lead the design and development of our core web application platform and APIs. My work spans the full stack, with a primary focus on ensuring our customer-facing web apps are robust, performant, and easy to use.<br /><br />I also design and maintain our backend APIs using tRPC, enabling type-safe, end-to-end communication between our React frontends and AWS-based serverless infrastructure.",
+		roleSummary: "As a founding engineer at Operator, I led the design and development of our core web application platform and APIs. My contributions spanned the full stack, with a primary focus on ensuring our customer-facing web apps are robust, performant, and easy to use.<br /><br />I also implemented and maintained our backend APIs using tRPC, enabling type-safe, end-to-end communication between our React frontends and AWS-based serverless infrastructure.",
 		timeline: '2024 — 2025',
 		projects: [
 			{
@@ -32,12 +34,12 @@ const jobs = [
 		industries: ['Healthcare', 'Life Sciences', 'Nonprofit', 'SaaS'],
 		platforms: ['Web'],
 		link: 'https://www.lunadna.com',
-		description: 'Public Benefit Corporation with platforms for Study Members, Community Admins, Survey Builders, and Researchers.',
+		description: 'Public Benefit Corporation with platforms for Study Members, Community Admins, Survey Builders, and Researchers',
 		logoUrl: '../images/logos/logo-luna.png',
 		bgUrl: '../images/luna-my-data.png',
 		bgColor: '#009899',
-		role: 'Lead Front-end Engineer',
-		roleSummary: "As the founding Lead Front-end Engineer I helped build a connected suite of web apps that comprise Luna's product offering.<br /><br />We were a small but mighty team of ten that managed to churn out an impressive amount of value through hard work, collaboration and creativity.<br /><br />I hired and led the front-end development team and worked closely with our talented backend and devops teams to create a scalable, secure, and performant platform that served hundreds of thousands of users.",
+		role: 'Lead Frontend Engineer',
+		roleSummary: "As an early hire and Lead Frontend Engineer, I built the connected suite of web apps that comprised Luna's Member-Admin-Researcher product offering.<br /><br />I hired three frontend developers, and we all worked closely with our 3-person backend and 2-person devops teams to create a scalable, secure, and performant platform that served hundreds of thousands of users.<br /><br />Unfortunately, in the end Luna was unable to find a sustainable business model and was forced to shut down.",
 		timeline: '2019 — 2024',
 		projects: [
 			{
@@ -55,12 +57,12 @@ const jobs = [
 					'300k+ EHRs synced',
 				],
 				features: [
-					'OIDC identity authentication',
-					'Policy-based access control (PBAC)',
-					'Redux store for managing studies, surveys, submitted content, notifications, communities, settings and more',
+					'OIDC identity authentication and policy-based access control (PBAC)',
+					'gRPC and WebRTC streaming API for video and audio survey responses',
+					'Redux store, query caching, and WebSocket connections for managing stateful user content',
+					'Feature flag-driven development methodologies',
 					'Error management and reporting',
 					'KPI and conversion tracking',
-					'Feature flags for product development and A/B testing',
 				],
 				technologies: ['React', '.NET', 'AWS'],
 				color: 'teal',
@@ -106,7 +108,7 @@ const jobs = [
 		industries: ['Direct Response Marketing', 'Ecommerce'],
 		platforms: ['Web'],
 		link: 'https://www.smashtech.com',
-		description: 'Agency for Direct Response Marketing and ecommerce brands.',
+		description: 'Agency for Direct Response Marketing and ecommerce brands',
 		logoUrl: '../images/logos/logo-smashtech.png',
 		bgUrl: '../images/card-skinnyfit-full.jpg',
 		bgColor: '#000',
@@ -140,12 +142,12 @@ const jobs = [
 		industries: ['Affiliate Marketing', 'Ecommerce', 'Identity Verification', 'SaaS'],
 		platforms: ['Web'],
 		link: 'https://www.govx.com',
-		description: 'Ecommerce platforms for military members, first responders, and other government employees.',
+		description: 'Ecommerce platforms for military members, first responders, and other government employees',
 		logoUrl: '../images/logos/logo-govx.jpeg',
 		bgUrl: '../images/card-govx-full.jpg',
 		bgColor: '#2a2d36',
 		role: 'Senior Web Developer',
-		roleSummary: 'As the only front-end developer at GovX, I built the first React application that enabled hundreds of thousands of military and first responders to register, get verified, then shop for exclusive discounts on products and services, with Shop and Ticketing sales that peaked at $1M+ in daily sales.<br /><br />Later, as the lead front-end developer, I helped create GOVX ID by building an embeddable React application that allows ecommerce companies and brands to provide discounts to military and first responders by verifying their affiliation and eligibility via GovX APIs.',
+		roleSummary: 'As the only frontend developer at GovX, I built the first React application that enabled hundreds of thousands of military and first responders to register, get verified, then shop for exclusive discounts on products and services, with Shop and Ticketing sales that peaked at $1M+ in daily sales.<br /><br />Later, as the frontend lead, I helped create GOVX ID by building an embeddable React application that allows ecommerce companies and brands to provide discounts to military and first responders by verifying their affiliation and eligibility via GovX APIs.',
 		timeline: '2015 — 2018',
 		projects: [
 			{
@@ -183,7 +185,7 @@ const jobs = [
 		industries: ['Entertainment', 'Video Streaming'],
 		platforms: ['Web', 'Xbox One'],
 		link: 'https://start.att.net/exclusive/uverse/uverse-tv',
-		description: 'Video streaming applications for AT&T U-verse.',
+		description: 'Video streaming applications for AT&T U-verse',
 		logoUrl: '../images/logos/logo-piksel.jpeg',
 		bgUrl: '../images/card-uverse-full.jpg',
 		bgColor: '#007dba',
@@ -218,12 +220,12 @@ const jobs = [
 		industries: ['Healthcare', 'Nonprofit'],
 		platforms: ['Web'],
 		link: 'https://www.healthpartners.com/hp/index.html',
-		description: 'Minnesota-based non-profit healthcare and insurance provider.',
+		description: 'Minnesota-based non-profit healthcare and insurance provider',
 		logoUrl: '../images/logos/logo-healthpartners.jpeg',
 		bgUrl: '../images/card-hp-full.jpg',
 		bgColor: '#60489d',
-		role: 'Front-end Web Developer',
-		roleSummary: 'As a Front-end Web Developer at HealthPartners, I was responsible for building and maintaining the HealthPartners.com marketing website and the HealthPartners Find Care, Insurance, Pharmacy, and Living Well web applications.<br /><br />I helped create a custom Bootstrap theme that was inherited by all HealthPartners web properties.',
+		role: 'Frontend Web Developer',
+		roleSummary: 'As a Frontend Web Developer at HealthPartners, I was responsible for building and maintaining the HealthPartners.com marketing website and the HealthPartners Find Care, Insurance, Pharmacy, and Living Well web applications.<br /><br />I helped create a custom Bootstrap theme that was inherited by all HealthPartners web properties.',
 		timeline: '2013 — 2014',
 		projects: [
 			{
@@ -270,7 +272,7 @@ const jobs = [
 		industries: ['Ecommerce', 'IoT', 'Marketing'],
 		platforms: ['Web'],
 		link: 'https://www.digi.com',
-		description: 'Global provider of Internet of Things (IoT) connectivity products and services.',
+		description: 'Global provider of Internet of Things (IoT) connectivity products and services',
 		logoUrl: '../images/logos/logo-digi.jpeg',
 		bgUrl: '../images/card-digi-full.jpg',
 		bgColor: '#91d46c',
