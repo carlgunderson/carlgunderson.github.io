@@ -1,4 +1,5 @@
 import path from 'path'
+import fs from 'fs'
 import mkcert from 'vite-plugin-mkcert'
 import { defineConfig, loadEnv } from 'vite'
 import { tanstackRouter } from '@tanstack/router-plugin/vite'
@@ -40,6 +41,18 @@ export default defineConfig(({ command, mode }) => {
 				autoCodeSplitting: true,
 			}),
 			react(),
+			{
+				name: 'copy-index-to-404',
+				writeBundle() {
+					// Copy the built index.html to 404.html for GitHub Pages SPA support
+					const indexPath = path.join(__dirname, 'dist', 'index.html');
+					const notFoundPath = path.join(__dirname, 'dist', '404.html');
+					
+					if (fs.existsSync(indexPath)) {
+						fs.copyFileSync(indexPath, notFoundPath);
+					}
+				},
+			},
 		],
 		ssr: {
 			noExternal: ['posthog-js', 'posthog-js/react'],
