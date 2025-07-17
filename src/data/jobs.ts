@@ -66,7 +66,7 @@ const jobs: IJob[] = [
 				],
 				technologies: ['React', '.NET', 'AWS'],
 				color: 'teal',
-				imageUrl: '',
+				imageUrl: '/images/luna-study.png',
 			},
 			{
 				slug: 'admin',
@@ -98,7 +98,7 @@ const jobs: IJob[] = [
 				description: "Luna Workbench is a research sandbox for Community Researchers to explore and analyze their Luna Members' data. Researchers can choose how to view and analyze the data with options like Jupiter Notebook, Tableau, Amazon QuickSight and more.",
 				technologies: ['React', '.NET', 'AWS'],
 				color: 'teal',
-				imageUrl: '',
+				imageUrl: '/images/luna-my-data.png',
 			},
 		],
 	},

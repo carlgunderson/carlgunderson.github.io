@@ -8,7 +8,7 @@ import '../src/styles.css'
 import App from '../src/components/App'
 import AnalyticsProvider from '../src/providers/AnalyticsProvider'
 
-const NextApp = ({ Component, pageProps }: AppProps) => {
+export default function NextApp({ Component, pageProps }: AppProps) {
   return (
     <AnalyticsProvider>
       <App>
@@ -17,5 +17,3 @@ const NextApp = ({ Component, pageProps }: AppProps) => {
     </AnalyticsProvider>
   )
 }
-
-export default NextApp

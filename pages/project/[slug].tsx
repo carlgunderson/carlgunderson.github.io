@@ -5,8 +5,8 @@ import { motion } from 'motion/react'
 import { useRouter } from 'next/router'
 import Head from 'next/head'
 import posthog from 'posthog-js'
-import { useTheme } from '../../src/contexts/ThemeContext'
 
+import { useTheme } from '../../src/contexts/ThemeContext'
 import jobs from '../../src/data/jobs'
 
 export default function ProjectDetail() {
@@ -23,7 +23,6 @@ export default function ProjectDetail() {
     router.push(`/project/${jobs[index].slug}`)
   }
 
-  // Handle loading state
   if (router.isFallback || !job) {
     return null
   }
@@ -31,15 +30,23 @@ export default function ProjectDetail() {
   return (
     <>
       <Head>
-        <title>{job.displayName} - {job.role} | Carl Gunderson</title>
+        <title>{`${job.displayName} - ${job.role} | Carl Gunderson`}</title>
+        <meta name="viewport" content="minimum-scale=1, initial-scale=1, width=device-width, shrink-to-fit=no" />
         <meta name="description" content={job.description} />
+        <meta property="og:type" content="website" />
         <meta property="og:title" content={`${job.displayName} - ${job.role}`} />
         <meta property="og:description" content={job.description} />
-        <meta property="og:url" content={`https://carlgunderson.com/project/${slug}`} />
-        <meta property="og:image" content="/images/og-image.png" />
-        <link rel="canonical" href={`https://carlgunderson.com/project/${slug}`} />
+        <meta property="og:url" content={`https://carlgunderson.com/project/${slug}/`} />
+        <meta property="og:image" content="https://carlgunderson.com/images/og-image.png" />
+        <meta property="og:image:alt" content={`${job.displayName} - ${job.role} | Carl Gunderson`} />
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:title" content={`${job.displayName} - ${job.role}`} />
+        <meta name="twitter:description" content={job.description} />
+        <meta name="twitter:image" content="https://carlgunderson.com/images/og-image.png" />
+        <link rel="canonical" href={`https://carlgunderson.com/project/${slug}/`} />
+        <link rel="icon" type="image/x-icon" href="/favicon.ico" />
+        <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
       </Head>
-
       <Flex direction='column' gap='8' style={{ position: 'relative' }}>
         <motion.div
           initial={{ opacity: 0, y: 24 }}
@@ -60,15 +67,16 @@ export default function ProjectDetail() {
             >
               <img
                 src={job.logoUrl}
+                alt={`${job.displayName} logo`}
                 width={64}
                 height={64}
                 style={{ mixBlendMode: theme === 'dark' ? 'normal' : 'multiply' }}
               />
             </Flex>
             <Flex direction='column' gap='1'>
-              <Heading size='5'>
+              <Heading as='h1' size='5'>
                 {job.role}&nbsp;
-                <small style={{ fontSize: 14, fontWeight: 'normal' }}>
+                <small style={{ fontSize: 14, fontWeight: 300 }}>
                   ({job.timeline})
                 </small>
               </Heading>
@@ -84,7 +92,7 @@ export default function ProjectDetail() {
                     textDecoration: 'none',
                   }}
                 >
-                  <span style={{ fontWeight: 'bold' }}>{job.displayName}</span>
+                  <span style={{ fontWeight: 700 }}>{job.displayName}</span>
                   <ExternalLinkIcon style={{ width: 14, height: 14, strokeWidth: 0.5 }} />
                 </a>
               </Text>
@@ -105,7 +113,7 @@ export default function ProjectDetail() {
           </div>
           {job.projects.map((project, i) => (
             <Flex key={i} direction='column' gap='4' style={{ marginTop: i === 0 ? 0 : 40 }}>
-              <Heading size='6'>
+              <Heading as='h2' size='6'>
                 {project.link ? (
                   <a
                     href={project.link}
@@ -128,7 +136,7 @@ export default function ProjectDetail() {
               <Text>{project.description}</Text>
               {project.features && project.features.length > 0 && (
                 <Flex direction='column' gap='1'>
-                  <Heading size='4'>🚀 Features</Heading>
+                  <Heading as='h3' size='4'>🚀 Features</Heading>
                   {project.features.map((a) => (
                     <Text key={a}>{a}</Text>
                   ))}
@@ -136,7 +144,7 @@ export default function ProjectDetail() {
               )}
               {project.achievements && project.achievements.length > 0 && (
                 <Flex direction='column' gap='1'>
-                  <Heading size='4'>📈 Achievements</Heading>
+                  <Heading as='h3' size='4'>📈 Achievements</Heading>
                   {project.achievements.map((a) => (
                     <Text key={a}>{a}</Text>
                   ))}
@@ -166,7 +174,7 @@ export default function ProjectDetail() {
             <Button
               variant='outline'
               size='3'
-              style={{ cursor: 'pointer', fontFamily: 'Outfit, sans-serif' }}
+              style={{ cursor: 'pointer', fontFamily: 'Outfit, sans-serif', fontWeight: 700 }}
               onClick={() => router.push('/')}
             >
               ← Home
@@ -177,7 +185,7 @@ export default function ProjectDetail() {
                 size='3'
                 variant='solid'
                 onClick={() => handleNavigate('prev')}
-                style={{ fontFamily: 'Outfit, sans-serif' }}
+                style={{ fontFamily: 'Outfit, sans-serif', fontWeight: 700, cursor: 'pointer' }}
                 children='Newer'
               />
               <Button
@@ -185,7 +193,7 @@ export default function ProjectDetail() {
                 size='3'
                 variant='solid'
                 onClick={() => handleNavigate('next')}
-                style={{ fontFamily: 'Outfit, sans-serif' }}
+                style={{ fontFamily: 'Outfit, sans-serif', fontWeight: 700, cursor: 'pointer' }}
                 children='Older'
               />
             </Flex>
@@ -195,32 +203,3 @@ export default function ProjectDetail() {
     </>
   )
 }
-
-// Generate static paths for all jobs
-export async function getStaticPaths() {
-  const paths = jobs.map((job) => ({
-    params: { slug: job.slug },
-  }))
-
-  return {
-    paths,
-    fallback: false, // Return 404 for any slug not in the list
-  }
-}
-
-// Generate static props for each job
-export async function getStaticProps({ params }: { params: { slug: string } }) {
-  const job = jobs.find(j => j.slug === params.slug)
-
-  if (!job) {
-    return {
-      notFound: true,
-    }
-  }
-
-  return {
-    props: {
-      job,
-    },
-  }
-} 

@@ -53,7 +53,7 @@ const JobCard: FC<JobCardProps> = ({ job }) => {
                 width: 80,
                 height: 80,
                 padding: 10,
-                backgroundColor: theme === 'dark' ? '#fff' : undefined,
+                backgroundColor: '#fff',
                 borderRadius: 10,
               }}
             >
