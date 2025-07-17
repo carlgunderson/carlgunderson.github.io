@@ -31,13 +31,22 @@ export default function ProjectDetail() {
   return (
     <>
       <Head>
-        <title>{job.displayName} - {job.role} | Carl Gunderson</title>
+        <title>{`${job.displayName} - ${job.role} | Carl Gunderson`}</title>
+        <meta name="viewport" content="minimum-scale=1, initial-scale=1, width=device-width, shrink-to-fit=no" />
         <meta name="description" content={job.description} />
+        <meta property="og:type" content="website" />
         <meta property="og:title" content={`${job.displayName} - ${job.role}`} />
         <meta property="og:description" content={job.description} />
-        <meta property="og:url" content={`https://carlgunderson.com/project/${slug}`} />
-        <meta property="og:image" content="/images/og-image.png" />
-        <link rel="canonical" href={`https://carlgunderson.com/project/${slug}`} />
+        <meta property="og:url" content={`https://carlgunderson.com/project/${slug}/`} />
+        <meta property="og:image" content="https://carlgunderson.com/images/og-image.png" />
+        <meta property="og:image:alt" content={`${job.displayName} - ${job.role} | Carl Gunderson`} />
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:title" content={`${job.displayName} - ${job.role}`} />
+        <meta name="twitter:description" content={job.description} />
+        <meta name="twitter:image" content="https://carlgunderson.com/images/og-image.png" />
+        <link rel="canonical" href={`https://carlgunderson.com/project/${slug}/`} />
+        <link rel="icon" type="image/x-icon" href="/favicon.ico" />
+        <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
       </Head>
 
       <Flex direction='column' gap='8' style={{ position: 'relative' }}>
@@ -60,13 +69,14 @@ export default function ProjectDetail() {
             >
               <img
                 src={job.logoUrl}
+                alt={`${job.displayName} logo`}
                 width={64}
                 height={64}
                 style={{ mixBlendMode: theme === 'dark' ? 'normal' : 'multiply' }}
               />
             </Flex>
             <Flex direction='column' gap='1'>
-              <Heading size='5'>
+              <Heading as='h1' size='5'>
                 {job.role}&nbsp;
                 <small style={{ fontSize: 14, fontWeight: 'normal' }}>
                   ({job.timeline})
@@ -105,7 +115,7 @@ export default function ProjectDetail() {
           </div>
           {job.projects.map((project, i) => (
             <Flex key={i} direction='column' gap='4' style={{ marginTop: i === 0 ? 0 : 40 }}>
-              <Heading size='6'>
+              <Heading as='h2' size='6'>
                 {project.link ? (
                   <a
                     href={project.link}
@@ -128,7 +138,7 @@ export default function ProjectDetail() {
               <Text>{project.description}</Text>
               {project.features && project.features.length > 0 && (
                 <Flex direction='column' gap='1'>
-                  <Heading size='4'>🚀 Features</Heading>
+                  <Heading as='h3' size='4'>🚀 Features</Heading>
                   {project.features.map((a) => (
                     <Text key={a}>{a}</Text>
                   ))}
@@ -136,7 +146,7 @@ export default function ProjectDetail() {
               )}
               {project.achievements && project.achievements.length > 0 && (
                 <Flex direction='column' gap='1'>
-                  <Heading size='4'>📈 Achievements</Heading>
+                  <Heading as='h3' size='4'>📈 Achievements</Heading>
                   {project.achievements.map((a) => (
                     <Text key={a}>{a}</Text>
                   ))}
@@ -223,4 +233,4 @@ export async function getStaticProps({ params }: { params: { slug: string } }) {
       job,
     },
   }
-} 
+}
