@@ -10,7 +10,7 @@ interface BoopConfig {
 
 export function useBoop({ rotation = 0, scale = 1, timing = 150, x = 0, y = 0 }: BoopConfig) {
   const [isBooped, setIsBooped] = useState(false)
-  const timeoutId = useRef<number>()
+  const timeoutId = useRef<number | undefined>(undefined)
 
   const trigger = () => {
     setIsBooped(true)

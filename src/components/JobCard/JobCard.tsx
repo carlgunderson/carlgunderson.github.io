@@ -1,5 +1,5 @@
 import { type FC, useState } from 'react'
-import { Link } from '@tanstack/react-router'
+import Link from 'next/link'
 import { motion, AnimatePresence } from 'motion/react'
 import { Card, Heading, Flex, Text, Badge } from '@radix-ui/themes'
 import { useTheme } from '~/contexts/ThemeContext'
@@ -28,7 +28,7 @@ const JobCard: FC<JobCardProps> = ({ job }) => {
 
   return (
     <Card style={{ padding: 0 }}>
-      <Link to={`/project/${job.slug}`} style={{ color: 'inherit', textDecoration: 'none', borderRadius: 20 }}>
+      <Link href={`/project/${job.slug}`} style={{ color: 'inherit', textDecoration: 'none', borderRadius: 20 }}>
         <motion.div
           initial={{ opacity: 0, y: 60, scale: 0.98 }}
           animate={{ opacity: 1, y: 0, scale: 1 }}
@@ -65,7 +65,7 @@ const JobCard: FC<JobCardProps> = ({ job }) => {
             </Flex>
             <div style={{ flex: 1, padding: 0, display: 'flex', flexDirection: 'column', justifyContent: 'center' }}>
               <Flex direction='column' style={{ position: 'relative', display: 'inline-block', width: 'fit-content' }}>
-                <Heading as="h2" size="5" style={{ fontWeight: 800, fontSize: 28, marginBottom: 14 }}>
+                <Heading as='h2' size='5' style={{ fontWeight: 800, fontSize: 28, marginBottom: 14 }}>
                   {job.displayName}
                 </Heading>
                 <Flex direction='row' wrap='wrap' gap='2' style={{ marginBottom: 10 }}>

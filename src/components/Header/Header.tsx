@@ -1,6 +1,7 @@
+import React from 'react'
 import { GitHubLogoIcon, LinkedInLogoIcon, MoonIcon, SunIcon } from '@radix-ui/react-icons'
 import { Text, Flex, Heading, IconButton } from '@radix-ui/themes'
-import { Link } from '@tanstack/react-router'
+import Link from 'next/link'
 import { motion } from 'motion/react'
 import posthog from 'posthog-js'
 
@@ -21,6 +22,11 @@ const socialLinks = [
 
 const Header = () => {
   const { theme, toggleTheme } = useTheme();
+  const [mounted, setMounted] = React.useState(false);
+
+  React.useEffect(() => {
+    setMounted(true);
+  }, []);
 
   return (
     <motion.header
@@ -34,25 +40,27 @@ const Header = () => {
       <Flex align='center' justify='between' style={{ maxWidth: 700, margin: '0 auto', padding: '16px 24px' }}>
         <Flex direction='column'>
           <Heading as='h1' size='7' style={{ fontWeight: 800 }}>
-            <Link to='/' style={{ color: 'inherit', textDecoration: 'none', borderRadius: 8 }}>Carl Gunderson</Link>
+            <Link href='/' style={{ color: 'inherit', textDecoration: 'none', borderRadius: 8 }}>Carl Gunderson</Link>
           </Heading>
           <Text color='gray' style={{fontWeight: 600, letterSpacing: 4.5, fontSize: 14 }}>WEB DEVELOPMENT</Text>
         </Flex>
         <Flex gap='4' align='center'>
-          <IconButton
-            asChild
-            aria-label="Toggle dark mode"
-            radius='full'
-            variant='ghost'
-            color='gray'
-            onClick={toggleTheme}
-          >
-            {theme === 'dark' ? (
-              <MoonIcon style={{ width: 24, height: 24 }} />
-            ) : (
-              <SunIcon style={{ width: 24, height: 24 }} />
-            )}
-          </IconButton>
+          {mounted && (
+            <IconButton
+              asChild
+              aria-label="Toggle dark mode"
+              radius='full'
+              variant='ghost'
+              color='gray'
+              onClick={toggleTheme}
+            >
+              {theme === 'dark' ? (
+                <MoonIcon style={{ width: 24, height: 24 }} />
+              ) : (
+                <SunIcon style={{ width: 24, height: 24 }} />
+              )}
+            </IconButton>
+          )}
           {socialLinks.map(link => (
             <IconButton
               key={link.label}
