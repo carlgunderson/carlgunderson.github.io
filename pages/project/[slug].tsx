@@ -5,11 +5,12 @@ import { motion } from 'motion/react'
 import { useRouter } from 'next/router'
 import Head from 'next/head'
 import posthog from 'posthog-js'
+import { GetStaticPaths, GetStaticProps } from 'next'
 
 import { useTheme } from '../../src/contexts/ThemeContext'
 import jobs from '../../src/data/jobs'
 
-export default function ProjectDetail() {
+const ProjectDetail = () => {
   const router = useRouter()
   const { slug } = router.query as { slug: string }
   const job = jobs.find(j => j.slug === slug)
@@ -20,7 +21,7 @@ export default function ProjectDetail() {
   const handleNavigate = (direction: 'prev' | 'next') => {
     posthog.capture('job_detail_navigate', { direction })
     const index = direction === 'prev' ? currentIndex - 1 : currentIndex + 1
-    router.push(`/project/${jobs[index].slug}`)
+    router.push(`/project/${jobs[index].slug}/`)
   }
 
   if (router.isFallback || !job) {
@@ -203,3 +204,33 @@ export default function ProjectDetail() {
     </>
   )
 }
+
+export const getStaticPaths: GetStaticPaths = async () => {
+  const paths = jobs.map((job) => ({
+    params: { slug: job.slug },
+  }))
+
+  return {
+    paths,
+    fallback: false,
+  }
+}
+
+export const getStaticProps: GetStaticProps = async ({ params }) => {
+  const slug = params?.slug as string
+  const job = jobs.find(j => j.slug === slug)
+
+  if (!job) {
+    return {
+      notFound: true,
+    }
+  }
+
+  return {
+    props: {
+      job,
+    },
+  }
+}
+
+export default ProjectDetail

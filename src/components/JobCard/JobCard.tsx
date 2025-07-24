@@ -28,7 +28,7 @@ const JobCard: FC<JobCardProps> = ({ job }) => {
 
   return (
     <Card style={{ padding: 0 }}>
-      <Link href={`/project/${job.slug}`} style={{ color: 'inherit', textDecoration: 'none', borderRadius: 20 }}>
+      <Link href={`/project/${job.slug}/`} style={{ color: 'inherit', textDecoration: 'none', borderRadius: 20 }}>
         <motion.div
           initial={{ opacity: 0, y: 60, scale: 0.98 }}
           animate={{ opacity: 1, y: 0, scale: 1 }}

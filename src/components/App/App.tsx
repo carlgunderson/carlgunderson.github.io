@@ -51,16 +51,23 @@ const App = ({ children }: { children: React.ReactNode }) => {
           style={{ maxWidth: 700, margin: '0 auto', padding: '40px 24px 0' }}
         >
           {children}
-          <footer style={{ margin: '64px auto 24px', textAlign: 'center' }}>
-            <Flex direction='column' align='center' justify='center' gap='2'>
-              <span style={{ display: 'block', marginBottom: 4, fontWeight: 700 }}>
-                made with &#x1f49a; around the &#x1f30e;
-              </span>
-              <span style={{ fontSize: 14, fontWeight: 700 }}>
-                &copy; { (new Date()).getFullYear() } Carl Gunderson
-              </span>
-            </Flex>
-          </footer>
+          <motion.div
+            initial={{ opacity: 0, y: 40 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, ease: 'easeOut', delay: 1.2 }}
+            style={{ margin: '64px auto 24px', textAlign: 'center' }}
+          >
+            <footer>
+              <Flex direction='column' align='center' justify='center' gap='2'>
+                <span style={{ display: 'block', marginBottom: 4, fontWeight: 700 }}>
+                  made with &#x1f49a; around the &#x1f30e;
+                </span>
+                <span style={{ fontSize: 14, fontWeight: 700 }}>
+                  &copy; { (new Date()).getFullYear() } Carl Gunderson
+                </span>
+              </Flex>
+            </footer>
+          </motion.div>
         </Flex>
       </RadixTheme>
     </ThemeProvider>
