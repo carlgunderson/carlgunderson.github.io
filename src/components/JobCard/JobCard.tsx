@@ -1,4 +1,4 @@
-import { type FC, useState } from 'react'
+import { type FC, useState, useRef } from 'react'
 import Link from 'next/link'
 import { motion, AnimatePresence } from 'motion/react'
 import { Card, Heading, Flex, Text, Badge } from '@radix-ui/themes'
@@ -23,28 +23,54 @@ interface JobCardProps {
 
 const JobCard: FC<JobCardProps> = ({ job }) => {
   const [hovered, setHovered] = useState(false)
-
   const { theme } = useTheme()
+  const ref = useRef<HTMLDivElement>(null)
 
   return (
-    <Card style={{ padding: 0 }}>
-      <Link href={`/project/${job.slug}/`} style={{ color: 'inherit', textDecoration: 'none', borderRadius: 20 }}>
-        <motion.div
-          initial={{ opacity: 0, y: 60, scale: 0.98 }}
-          animate={{ opacity: 1, y: 0, scale: 1 }}
-          exit={{ opacity: 0, y: 40, scale: 0.98 }}
-          transition={{ type: 'spring', stiffness: 500, damping: 30, mass: 1.2 }}
-          style={{
-            position: 'relative',
-            // backgroundColor: 'rgba(255,255,255,0.7)',
-            padding: 40,
-            border: 'none',
-            borderRadius: 20,
-            cursor: 'pointer',
-          }}
-          onMouseEnter={() => setHovered(true)}
-          onMouseLeave={() => setHovered(false)}
-        >
+    <motion.div
+      ref={ref}
+      initial={{ opacity: 0, y: 60, scale: 0.98 }}
+      animate={{ opacity: 1, y: 0, scale: 1 }}
+      exit={{ opacity: 0, y: 40, scale: 0.98 }}
+      transition={{ type: 'spring', stiffness: 500, damping: 30, mass: 1.2 }}
+      style={{
+        transformStyle: 'preserve-3d',
+        transition: 'transform 0.1s ease-out',
+      }}
+      onMouseMove={(e) => {
+        if (!ref.current) return
+        
+        const rect = ref.current.getBoundingClientRect()
+        const x = e.clientX - rect.left
+        const y = e.clientY - rect.top
+        
+        const centerX = rect.width / 2
+        const centerY = rect.height / 2
+        
+        const rotateX = (y - centerY) / 10
+        const rotateY = (centerX - x) / 10
+        
+        ref.current.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) scale3d(1.05, 1.05, 1.05)`
+      }}
+      onMouseLeave={() => {
+        if (ref.current) {
+          ref.current.style.transform = 'perspective(1000px) rotateX(0deg) rotateY(0deg) scale3d(1, 1, 1)'
+        }
+        setHovered(false)
+      }}
+      onMouseEnter={() => setHovered(true)}
+    >
+      <Card style={{ padding: 0, overflow: 'visible' }} tabIndex={0} asChild>
+        <Link href={`/project/${job.slug}/`} style={{ color: 'inherit', textDecoration: 'none' }}>
+          <div
+            style={{
+              position: 'relative',
+              padding: 40,
+              border: 'none',
+              borderRadius: 20,
+              cursor: 'pointer',
+            }}
+          >
           <Flex align='start' gap='4'>
             <Flex
               align='center'
@@ -99,9 +125,10 @@ const JobCard: FC<JobCardProps> = ({ job }) => {
               </Flex>
             </div>
           </Flex>
-        </motion.div>
-      </Link>
-    </Card>
+          </div>
+        </Link>
+      </Card>
+    </motion.div>
   )
 }
 

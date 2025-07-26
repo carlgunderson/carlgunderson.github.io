@@ -53,6 +53,12 @@ const Header = () => {
               variant='ghost'
               color='gray'
               onClick={toggleTheme}
+              onKeyDown={(e) => {
+                if (e.key === 'Enter') {
+                  toggleTheme()
+                }
+              }}
+              tabIndex={0}
             >
               {theme === 'dark' ? (
                 <MoonIcon style={{ width: 24, height: 24 }} />
