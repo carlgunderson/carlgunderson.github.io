@@ -31,22 +31,53 @@ const ProjectDetail = () => {
   return (
     <>
       <Head>
-        <title>{`${job.displayName} - ${job.role} | Carl Gunderson`}</title>
+        <title>{`${job.displayName} - ${job.role} | Carl Gunderson Portfolio`}</title>
         <meta name="viewport" content="minimum-scale=1, initial-scale=1, width=device-width, shrink-to-fit=no" />
-        <meta name="description" content={job.description} />
+        <meta name="description" content={`${job.role} at ${job.displayName} - ${job.description} ${job.timeline}. View detailed project information, technologies used, and achievements.`} />
+        <meta name="keywords" content={`${job.displayName}, ${job.role}, ${job.industries.join(', ')}, ${job.platforms.join(', ')}, Carl Gunderson, portfolio, web development`} />
+        <meta name="author" content="Carl Gunderson" />
+        <meta name="robots" content="index, follow" />
+
         <meta property="og:type" content="website" />
-        <meta property="og:title" content={`${job.displayName} - ${job.role}`} />
-        <meta property="og:description" content={job.description} />
+        <meta property="og:title" content={`${job.displayName} - ${job.role} | Carl Gunderson`} />
+        <meta property="og:description" content={`${job.role} at ${job.displayName} - ${job.description} ${job.timeline}. View detailed project information and achievements.`} />
         <meta property="og:url" content={`https://carlgunderson.com/project/${slug}/`} />
         <meta property="og:image" content="https://carlgunderson.com/images/og-image.png" />
         <meta property="og:image:alt" content={`${job.displayName} - ${job.role} | Carl Gunderson`} />
+        <meta property="og:site_name" content="Carl Gunderson Portfolio" />
+
         <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:title" content={`${job.displayName} - ${job.role}`} />
-        <meta name="twitter:description" content={job.description} />
+        <meta name="twitter:title" content={`${job.displayName} - ${job.role} | Carl Gunderson`} />
+        <meta name="twitter:description" content={`${job.role} at ${job.displayName} - ${job.description} ${job.timeline}.`} />
         <meta name="twitter:image" content="https://carlgunderson.com/images/og-image.png" />
+
         <link rel="canonical" href={`https://carlgunderson.com/project/${slug}/`} />
+
         <link rel="icon" type="image/x-icon" href="/favicon.ico" />
         <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
+
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              "@context": "https://schema.org",
+              "@type": "Person",
+              "name": "Carl Gunderson",
+              "jobTitle": job.role,
+              "worksFor": {
+                "@type": "Organization",
+                "name": job.displayName,
+                "url": job.link
+              },
+              "description": `${job.role} at ${job.displayName} - ${job.description}`,
+              "url": `https://carlgunderson.com/project/${slug}/`,
+              "sameAs": [
+                "https://github.com/carlgunderson",
+                "https://linkedin.com/in/carlgunderson"
+              ]
+            })
+          }}
+        />
       </Head>
       <Flex direction='column' gap='8' style={{ position: 'relative' }}>
         <motion.div
