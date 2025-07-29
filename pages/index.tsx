@@ -1,5 +1,5 @@
 import React from 'react'
-import { motion, AnimatePresence } from 'motion/react'
+import { motion } from 'motion/react'
 import { Flex, Text } from '@radix-ui/themes'
 import Head from 'next/head'
 
@@ -65,7 +65,7 @@ export default function Home() {
         animate={{ opacity: 1, y: 0 }}
         transition={{ type: 'spring', stiffness: 100, damping: 30, delay: 0.1 }}
       >
-        <Text as='p' style={{ position: 'relative', fontSize: 20, marginBottom: 48, fontWeight: 300, maxWidth: '100%' }}>
+        <Text as='p' style={{ position: 'relative', fontSize: 20, marginBottom: 48, fontWeight: 300 }}>
           👋 <strong style={{ fontWeight: 700 }}>Hey there!</strong> I'm Carl — a product engineer who loves solving problems and building things. Preferably at the same time.
         </Text>
       </motion.div>
@@ -73,15 +73,12 @@ export default function Home() {
         initial={{ opacity: 0, y: 24 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ type: 'spring', stiffness: 100, damping: 30, delay: 0.6 }}
-        style={{ maxWidth: '100%' }}
       >
-        <AnimatePresence>
-          <Flex direction='column' align='stretch' gap='7'>
-            {jobs.map(job => (
-              <JobCard key={job.slug} job={job} />
-            ))}
-          </Flex>
-        </AnimatePresence>
+        <Flex direction='column' align='stretch' gap='7'>
+          {jobs.map((job, index) => (
+            <JobCard  key={job.slug} job={job} />
+          ))}
+        </Flex>
       </motion.div>
     </>
   )
