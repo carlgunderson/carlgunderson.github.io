@@ -12,14 +12,14 @@ export default function Home() {
       <Head>
         <title>Carl Gunderson | Product Engineer & Web Developer Portfolio</title>
         <meta name="viewport" content="minimum-scale=1, initial-scale=1, width=device-width, shrink-to-fit=no" />
-        <meta name="description" content="Carl Gunderson is a product engineer and web developer with experience at Operator.ai, LunaDNA, Smashtech, GovX, and more. View portfolio of React, TypeScript, and full-stack development projects." />
-        <meta name="keywords" content="Carl Gunderson, product engineer, web developer, React, TypeScript, full-stack, portfolio, Operator.ai, LunaDNA, Smashtech, GovX" />
+        <meta name="description" content="Carl Gunderson is a product engineer and web developer. View portfolio of React, TypeScript, and full-stack projects." />
+        <meta name="keywords" content="Carl Gunderson, product engineer, web developer, software engineer, React, TypeScript, full-stack, portfolio, Operator.ai, LunaDNA, Smashtech, GovX" />
         <meta name="author" content="Carl Gunderson" />
         <meta name="robots" content="index, follow" />
 
         <meta property="og:type" content="website" />
         <meta property="og:title" content="Carl Gunderson | Product Engineer & Web Developer Portfolio" />
-        <meta property="og:description" content="Product engineer and web developer with experience at Operator.ai, LunaDNA, Smashtech, GovX, and more. View portfolio of React, TypeScript, and full-stack development projects." />
+        <meta property="og:description" content="Product engineer and web developer. View portfolio of React, TypeScript, and full-stack development projects." />
         <meta property="og:url" content="https://carlgunderson.com/" />
         <meta property="og:image" content="https://carlgunderson.com/images/og-image.png" />
         <meta property="og:image:alt" content="Carl Gunderson web development portfolio" />
@@ -27,7 +27,7 @@ export default function Home() {
 
         <meta name="twitter:card" content="summary_large_image" />
         <meta name="twitter:title" content="Carl Gunderson | Product Engineer & Web Developer Portfolio" />
-        <meta name="twitter:description" content="Product engineer and web developer with experience at Operator.ai, LunaDNA, Smashtech, GovX, and more." />
+        <meta name="twitter:description" content="Product engineer and web developer." />
         <meta name="twitter:image" content="https://carlgunderson.com/images/og-image.png" />
 
         <link rel="canonical" href="https://carlgunderson.com/" />
@@ -73,6 +73,7 @@ export default function Home() {
         initial={{ opacity: 0, y: 24 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ type: 'spring', stiffness: 100, damping: 30, delay: 0.6 }}
+        style={{ maxWidth: '100%' }}
       >
         <Flex direction='column' align='stretch' gap='7'>
           {jobs.map((job, index) => (
