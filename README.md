@@ -56,7 +56,7 @@ pnpm dlx serve -s out -l 5000
 
 ## Deployment
 
-Pushes to `master` trigger the GitHub Actions workflow `.github/workflows/gh-pages.yml` which:
+Pushes to `main` trigger the GitHub Actions workflow `.github/workflows/gh-pages.yml` which:
 
 1. Installs dependencies with pnpm
 2. Builds the site with `next build` (static export)
