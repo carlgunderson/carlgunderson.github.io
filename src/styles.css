@@ -25,3 +25,20 @@ html, body {
     @apply bg-background text-foreground;
 	}
 }
+
+/* Achievement metric sits inline with its label, stacking on narrow screens.
+   Breakpoint matches MOBILE_BREAKPOINT in src/hooks/use-mobile.ts. */
+.achievement-value {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 10px;
+}
+
+@media (max-width: 767px) {
+  .achievement-value {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0;
+  }
+}

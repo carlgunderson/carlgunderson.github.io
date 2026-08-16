@@ -1,5 +1,5 @@
 import React from 'react'
-import { ExternalLinkIcon } from '@radix-ui/react-icons'
+import { BarChartIcon, CheckIcon, ExternalLinkIcon } from '@radix-ui/react-icons'
 import { Button, Flex, Heading, Text, Badge } from '@radix-ui/themes'
 import { motion } from 'motion/react'
 import { useRouter } from 'next/router'
@@ -9,6 +9,34 @@ import { GetStaticPaths, GetStaticProps } from 'next'
 
 import { useTheme } from '../../src/contexts/ThemeContext'
 import jobs from '../../src/data/jobs'
+
+// Achievements are written as "<metric> <what it measures>" ("150k+ registered
+// members"). Pulling the metric out lets it sit in its own aligned column so the
+// numbers can be scanned down the page. Items without a leading metric fall back
+// to plain text.
+const METRIC_PATTERN = /^(\$?\d[\d.,]*\s?[kKmMbB]?\+?%?)\s+(.+)$/
+
+// Every list marker occupies this same column so text starts on one left edge
+// across all lists on the page.
+const ICON_SIZE = 16
+const MARKER_GAP = 10
+
+const listStyle = {
+  listStyle: 'none',
+  padding: 0,
+  margin: 0,
+  display: 'flex',
+  flexDirection: 'column',
+  gap: 12,
+} as const
+
+const itemStyle = { display: 'flex', alignItems: 'flex-start', gap: MARKER_GAP } as const
+
+// Extra breathing room above each list heading, on top of the project stack's gap.
+const sectionHeadingStyle = { marginTop: 12 } as const
+
+// Nudges the icon down onto the optical centre of the first line of text.
+const markerStyle = { display: 'flex', flexShrink: 0, width: ICON_SIZE, marginTop: 4 } as const
 
 const ProjectDetail = () => {
   const router = useRouter()
@@ -143,7 +171,13 @@ const ProjectDetail = () => {
           <div style={{ marginTop: 40, marginBottom: 10 }}>
             <Badge variant='outline' color='gray'>PROJECTS</Badge>
           </div>
-          {job.projects.map((project, i) => (
+          {job.projects.map((project, i) => {
+            const heroSrc = project.imageUrl || job.bgUrl
+            // Logo artwork is transparent, so it sits on the company's brand color to
+            // stay legible in either theme. Screenshots are opaque and render as-is.
+            const isLogoHero = heroSrc.includes('/logos/')
+
+            return (
             <Flex key={i} direction='column' gap='4' style={{ marginTop: i === 0 ? 0 : 40 }}>
               <Heading as='h2' size='6'>
                 {project.link ? (
@@ -167,26 +201,70 @@ const ProjectDetail = () => {
               </Heading>
               <Text>{project.description}</Text>
               {project.features && project.features.length > 0 && (
-                <Flex direction='column' gap='1'>
-                  <Heading as='h3' size='4'>🚀 Features</Heading>
-                  {project.features.map((a) => (
-                    <Text key={a}>{a}</Text>
-                  ))}
+                <Flex direction='column' gap='2'>
+                  <Heading as='h3' size='4' style={sectionHeadingStyle}>🚀 Features</Heading>
+                  <ul style={listStyle}>
+                    {project.features.map((a) => (
+                      <li key={a} style={itemStyle}>
+                        <Text color={project.color as any} style={markerStyle} aria-hidden>
+                          <CheckIcon style={{ width: ICON_SIZE, height: ICON_SIZE }} />
+                        </Text>
+                        <Text>{a}</Text>
+                      </li>
+                    ))}
+                  </ul>
                 </Flex>
               )}
               {project.achievements && project.achievements.length > 0 && (
-                <Flex direction='column' gap='1'>
-                  <Heading as='h3' size='4'>📈 Achievements</Heading>
-                  {project.achievements.map((a) => (
-                    <Text key={a}>{a}</Text>
-                  ))}
+                <Flex direction='column' gap='2'>
+                  <Heading as='h3' size='4' style={sectionHeadingStyle}>📈 Achievements</Heading>
+                  <ul style={listStyle}>
+                    {project.achievements.map((a) => {
+                      const [, metric, label] = a.match(METRIC_PATTERN) ?? []
+
+                      return (
+                        <li key={a} style={itemStyle}>
+                          <Text color={project.color as any} style={markerStyle} aria-hidden>
+                            <BarChartIcon style={{ width: ICON_SIZE, height: ICON_SIZE }} />
+                          </Text>
+                          {metric ? (
+                            <div className='achievement-value'>
+                              <Text
+                                color={project.color as any}
+                                style={{
+                                  fontSize: 20,
+                                  fontWeight: 800,
+                                  lineHeight: 1.3,
+                                  fontVariantNumeric: 'tabular-nums',
+                                }}
+                              >
+                                {metric}
+                              </Text>
+                              <Text>{label}</Text>
+                            </div>
+                          ) : (
+                            <Text>{a}</Text>
+                          )}
+                        </li>
+                      )
+                    })}
+                  </ul>
                 </Flex>
               )}
               {(project.imageUrl || i === 0) && (
                 <img
-                  src={project.imageUrl || job.bgUrl}
+                  src={heroSrc}
                   alt={project.displayName + ' background'}
-                  style={{ width: '100%', height: 'auto', borderRadius: 12 }}
+                  style={{
+                    width: '100%',
+                    height: 'auto',
+                    borderRadius: 12,
+                    ...(isLogoHero && {
+                      backgroundColor: job.bgColor,
+                      padding: '6% 14%',
+                      boxSizing: 'border-box',
+                    }),
+                  }}
                 />
               )}
               <Flex wrap='wrap' gap='2'>
@@ -195,7 +273,8 @@ const ProjectDetail = () => {
                 ))}
               </Flex>
             </Flex>
-          ))}
+            )
+          })}
         </motion.div>
         <motion.div
           initial={{ opacity: 0, y: 24 }}
