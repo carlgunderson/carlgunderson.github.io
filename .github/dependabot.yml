@@ -1,0 +1,30 @@
+version: 2
+
+updates:
+  # Keep the Actions in the Pages workflow patched. Without this, actions are
+  # never updated and silently drift onto deprecated runtimes.
+  - package-ecosystem: github-actions
+    directory: /
+    schedule:
+      interval: weekly
+    groups:
+      actions:
+        patterns:
+          - '*'
+    commit-message:
+      prefix: ci
+
+  - package-ecosystem: npm
+    directory: /
+    schedule:
+      interval: weekly
+    open-pull-requests-limit: 10
+    # Routine minor/patch bumps arrive as one reviewable PR so they are less
+    # likely to be ignored. Majors stay separate since they need real review.
+    groups:
+      minor-and-patch:
+        update-types:
+          - minor
+          - patch
+    commit-message:
+      prefix: deps

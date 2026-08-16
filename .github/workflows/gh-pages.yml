@@ -1,4 +1,12 @@
-# Simple workflow for deploying static content to GitHub Pages
+# Builds the Next.js static export and deploys it to GitHub Pages.
+#
+# Toolchain versions are declared once and read from there, so CI cannot drift
+# from local:
+#   - Node  -> .nvmrc
+#   - pnpm  -> the "packageManager" field in package.json (integrity-checked)
+#
+# Actions are pinned to commit SHAs rather than tags. A tag can be moved to
+# point at different code; a SHA cannot. Dependabot updates these weekly.
 name: Deploy to GitHub Pages
 
 on:
@@ -29,30 +37,41 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
-        uses: actions/checkout@v4
-      - name: Set up Node
-        uses: actions/setup-node@v4
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
         with:
-          node-version: 22
+          # The build never pushes, so don't leave a usable token in .git/config.
+          persist-credentials: false
+
+      # Must run before setup-node so that its pnpm cache can resolve.
       - name: Install pnpm
-        # Pinned to match the version used locally. Unpinned, CI picks up the
-        # latest pnpm, which stopped reading the "pnpm" field in package.json
-        # and fails the install on ignored build scripts.
-        run: npm install -g pnpm@10.4.1
+        uses: pnpm/action-setup@0977fd99725f1db4007ccb2928dbb4e90d06cc86 # v6.0.10
+
+      - name: Set up Node
+        uses: actions/setup-node@820762786026740c76f36085b0efc47a31fe5020 # v7.0.0
+        with:
+          node-version-file: '.nvmrc'
+          cache: 'pnpm'
+
       - name: Install dependencies
-        run: pnpm install
+        # --frozen-lockfile fails the build if the lockfile does not match
+        # package.json, instead of silently resolving to different versions.
+        run: pnpm install --frozen-lockfile
+
       - name: Build
         run: NODE_ENV=github pnpm run build
         env:
           NEXT_PUBLIC_POSTHOG_KEY: ${{ secrets.NEXT_PUBLIC_POSTHOG_KEY }}
           NEXT_PUBLIC_POSTHOG_HOST: ${{ secrets.NEXT_PUBLIC_POSTHOG_HOST }}
+
       - name: Setup Pages
-        uses: actions/configure-pages@v5
+        uses: actions/configure-pages@45bfe0192ca1faeb007ade9deae92b16b8254a0d # v6.0.0
+
       - name: Upload artifact
-        uses: actions/upload-pages-artifact@v3
+        uses: actions/upload-pages-artifact@fc324d3547104276b827a68afc52ff2a11cc49c9 # v5.0.0
         with:
           # Upload Next.js static export
           path: './out'
+
       - name: Deploy to GitHub Pages
         id: deployment
-        uses: actions/deploy-pages@v4
+        uses: actions/deploy-pages@cd2ce8fcbc39b97be8ca5fce6e763baed58fa128 # v5.0.0
